@@ -39,7 +39,7 @@ export default function Analyze() {
         <div className="relative">
           <div className="absolute -inset-10 -z-10 rounded-3xl bg-gradient-to-r from-purple-200 via-indigo-100 to-blue-200 opacity-40 blur-3xl" />
 
-          <div className="bg-white rounded-3xl p-8 shadow-lg">
+          <div className="bg-black rounded-3xl p-8 shadow-lg">
             <div className="space-y-6">
               <div>
                 <input
@@ -58,7 +58,7 @@ export default function Analyze() {
                 />
                 {error && (
                   <p className="text-red-600 text-sm mt-1" role="alert">
-                    required
+                    please enter a skill before analyze
                   </p>
                 )}
               </div>

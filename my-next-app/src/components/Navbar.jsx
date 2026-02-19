@@ -38,7 +38,7 @@ export default function Navbar() {
 
     return (
         <div>
-            <nav className="bg-gray-800 py-6 px-6 rounded-lg">
+            <nav className="bg-purple-950 py-2 px-2 rounded-lg">
                 <div className="flex items-center justify-between">
                         <ul className="flex-space-x-6">
                             <li>
