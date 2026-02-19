@@ -1,5 +1,6 @@
 // ...existing code...
 'use client'
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
@@ -38,9 +39,10 @@ export default function Home() {
 
           <div className="md:w-1/2 flex justify-center">
               <div className="relative w-80 h-56">
-                <img
+                <Image
                   src="https://media.istockphoto.com/id/1435220822/photo/african-american-software-developer.jpg?s=612x612&w=0&k=20&c=JESGRQ2xqRH9ZcJzvZBHZIZKVY8MDejBSOfxeM-i5e4="
                   alt="Profile"
+                  fill
                   className="w-full h-full rounded shadow-sm object-cover"
                 />
               </div>
@@ -52,9 +54,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-8 flex flex-col md:flex-row items-center gap-12">
         <div className="md: w-1/2 flex justify-center">
           <div className="relative w-80 h-56">
-            <img
+            <Image
               src="https://media.istockphoto.com/id/526274307/photo/beginnings-of-computer-languages-in-schools.jpg?s=612x612&w=0&k=20&c=exzkCnsR5FRL4u08RovTaqGDeQ_a790lFudrwbc3ufE="
               alt="Profile"
+              fill
               className="w-full h-full rounded shadow-sm object-cover"
             />
           </div>
@@ -92,7 +95,7 @@ export default function Home() {
           </div>
 
           <div className="relative w-80 h-56">
-          <img
+          <Image
             src="https://www.joinhgs.com/sites/default/files/inline-images/AI.png"
             alt="Profile"
             className="w-full h-full rounded shadow-sm object-cover"
