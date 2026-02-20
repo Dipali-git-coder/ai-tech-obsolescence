@@ -47,10 +47,6 @@ db.sqlite3
 # Migrations cache
 **/__pycache__/
 
-# Data files
-*.json
-*.csv
-
 # Media / static
 media/
 staticfiles/

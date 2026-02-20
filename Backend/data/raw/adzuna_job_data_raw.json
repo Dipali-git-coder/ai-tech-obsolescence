@@ -1,0 +1,571 @@
+{
+    "mean": 1014109.16,
+    "__CLASS__": "Adzuna::API::Response::JobSearchResults",
+    "count": 163624,
+    "results": [
+        {
+            "category": {
+                "label": "IT Jobs",
+                "tag": "it-jobs",
+                "__CLASS__": "Adzuna::API::Response::Category"
+            },
+            "created": "2025-12-11T01:42:54Z",
+            "company": {
+                "__CLASS__": "Adzuna::API::Response::Company",
+                "display_name": "Alpha Variance Solutions"
+            },
+            "redirect_url": "https://www.adzuna.in/land/ad/5537000647?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=844BC4EA6E1468D4279ABC73F1BC4E0FF20CDB1B",
+            "location": {
+                "__CLASS__": "Adzuna::API::Response::Location",
+                "area": [
+                    "India"
+                ],
+                "display_name": "India"
+            },
+            "salary_is_predicted": "0",
+            "id": "5537000647",
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "description": "Job Title: Full Stack Developer (React.js, Node.js, C#) Experience: 4-6 years This role is on site in Bangalore. NOT REMOTE Job Summary- We are seeking a skilled Full Stack Developer with expertise in React.js, Node.js, and C#. The ideal candidate will be responsible for developing and maintaining dynamic web applications, ensuring seamless front-end and back-end integration, and delivering high-quality solutions for our clients. Key Responsibilities Front-End Development : Build responsive and…",
+            "title": "Developer",
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJzIjoiUGxvZTZqSHE4QkdQZmFmenl2d1V4dyIsImkiOiI1NTM3MDAwNjQ3In0.-pMCHXO14Nz6tNsNDJbRt2las8gL5-B7pkykUqPnElM"
+        },
+        {
+            "category": {
+                "__CLASS__": "Adzuna::API::Response::Category",
+                "tag": "it-jobs",
+                "label": "IT Jobs"
+            },
+            "company": {
+                "display_name": "Tata Consultancy Services",
+                "__CLASS__": "Adzuna::API::Response::Company"
+            },
+            "created": "2025-12-16T18:17:13Z",
+            "redirect_url": "https://www.adzuna.in/land/ad/5544195289?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=D25B4D4982661FC7FB20D4FC9FA11BF5EAC38D12",
+            "salary_is_predicted": "0",
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "id": "5544195289",
+            "location": {
+                "display_name": "Bangalore, Karnataka",
+                "area": [
+                    "India",
+                    "Karnataka",
+                    "Bangalore"
+                ],
+                "__CLASS__": "Adzuna::API::Response::Location"
+            },
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJpIjoiNTU0NDE5NTI4OSIsInMiOiJQbG9lNmpIcThCR1BmYWZ6eXZ3VXh3In0.0UszCBz4n1zsp0N070XTytfWEW9MW68LeJ8_LkxHOYY",
+            "description": "TCS Hiring for Full Stack Developer(Java Springboot Microservices) Role! TCS presents an excellent opportunity for Full Stack Developer(Java Springboot Microservices) Role Job Title: Java Springboot Microservices Developer Work Location: Bangalore Experience Range: 6 to 10 yrs Notice period - less than 60 days Mode of Interview : Walk - In Required Technical Skill Set : Java 8 , Spring Boot, REST API and Microservices development with hands-on coding experience Responsibility of / Expectations …",
+            "title": "Developer"
+        },
+        {
+            "company": {
+                "__CLASS__": "Adzuna::API::Response::Company",
+                "display_name": "Tata Consultancy Services"
+            },
+            "created": "2025-12-27T22:08:30Z",
+            "redirect_url": "https://www.adzuna.in/land/ad/5557299158?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=C1E583A9FA46D5F3179133105D46A02BD2C1346D",
+            "category": {
+                "label": "IT Jobs",
+                "tag": "it-jobs",
+                "__CLASS__": "Adzuna::API::Response::Category"
+            },
+            "description": "TCS is Hiring For iOS SwiftUI Experience: 5 to 7 Years Location: Pune/Hyderabad Role : iOS Lead/Developer Skill : iOS SwiftUI Note: Pls apply only Required Experience! Key Responsibilities: · Lead the development of host apps on the iOS platform, ensuring high performance and responsiveness. · Collaborate with global stakeholders, including engineering, delivery teams, and QAs, to align on project goals and deliverables. · Implement and maintain robust, scalable, and efficient code using SwiftU…",
+            "title": "Developer",
+            "latitude": 18.5062,
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJpIjoiNTU1NzI5OTE1OCIsInMiOiJQbG9lNmpIcThCR1BmYWZ6eXZ3VXh3In0.q46IqiEn7VGpdRjCYqmBSmSBMOco3ejZ5oz5C50JuoA",
+            "location": {
+                "area": [
+                    "India",
+                    "Maharashtra",
+                    "Pune"
+                ],
+                "__CLASS__": "Adzuna::API::Response::Location",
+                "display_name": "Pune, Maharashtra"
+            },
+            "longitude": 73.84735,
+            "salary_is_predicted": "0",
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "id": "5557299158"
+        },
+        {
+            "salary_is_predicted": "0",
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "id": "5560712184",
+            "location": {
+                "display_name": "India",
+                "area": [
+                    "India"
+                ],
+                "__CLASS__": "Adzuna::API::Response::Location"
+            },
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJzIjoiUGxvZTZqSHE4QkdQZmFmenl2d1V4dyIsImkiOiI1NTYwNzEyMTg0In0.AbQMCmsoYXuZYsUeAvlaM-EPl1bwSIwJ8r_v2XTtyBA",
+            "description": "Role AWS Developer/Sr Developer Required Technical Skill Set AWS, SQL Desired Experience Range 5yeras Location of Requirement - Pan India Must-Have 1. In depth Knowledge on AWS 2. Knowledge of ETL process to facilitate smooth transfers and storage of data 3. Scripting skills using Pyspark Good-to-Have 1. Exposure to job scheduling/monitoring environments(Eg. Control-M) 2. Any Big data tools – Hadoop, Spark. 3 . Cloud migration experience Responsibility of / Expectations from the Role Implementi…",
+            "title": "Developer",
+            "category": {
+                "tag": "it-jobs",
+                "label": "IT Jobs",
+                "__CLASS__": "Adzuna::API::Response::Category"
+            },
+            "created": "2025-12-31T10:35:38Z",
+            "company": {
+                "__CLASS__": "Adzuna::API::Response::Company",
+                "display_name": "Tata Consultancy Services"
+            },
+            "redirect_url": "https://www.adzuna.in/land/ad/5560712184?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=4AC2AC49C1ABDE1F5C62354978AEC6CF19E1EC22"
+        },
+        {
+            "redirect_url": "https://www.adzuna.in/land/ad/5537386516?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=3F7923D8D599615777921F18C639582E07AFB5EC",
+            "created": "2025-12-11T09:28:21Z",
+            "company": {
+                "__CLASS__": "Adzuna::API::Response::Company",
+                "display_name": "Tata Consultancy Services"
+            },
+            "category": {
+                "__CLASS__": "Adzuna::API::Response::Category",
+                "tag": "it-jobs",
+                "label": "IT Jobs"
+            },
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJpIjoiNTUzNzM4NjUxNiIsInMiOiJQbG9lNmpIcThCR1BmYWZ6eXZ3VXh3In0.NLb2tGxZIdwSYebl8UqeW8aungqNjIARmDR3VuiC-GY",
+            "latitude": 19.00821,
+            "title": "Developer",
+            "description": "Location - Mumbai Exp - 6 to 8 yrs 1.Experience in C#, Azure, Oracle, .NET core 2.0 and Python 2. Experience on Asynchronous Messaging 3. Strong development experience with Oracle (PLSQL) or similar RDBMS 4. Expert level understanding of current development techniques, testing approaches, and deployment methods 5. Practical experience with Continuous Delivery practices and tools (eg. Github, Jenkins, SonarQube, Nexus, UrbanCode Deploy, Powershell, NUnit, MSTest, MSBuild) 6. Good knowledge on SS…",
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "id": "5537386516",
+            "salary_is_predicted": "0",
+            "longitude": 72.84415,
+            "location": {
+                "display_name": "Mumbai, Maharashtra",
+                "__CLASS__": "Adzuna::API::Response::Location",
+                "area": [
+                    "India",
+                    "Maharashtra",
+                    "Mumbai"
+                ]
+            }
+        },
+        {
+            "redirect_url": "https://www.adzuna.in/land/ad/5566767199?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=9EECBFC6159465862BDB3F8A2E42AD18B33EE361",
+            "company": {
+                "display_name": "Tata Consultancy Services",
+                "__CLASS__": "Adzuna::API::Response::Company"
+            },
+            "created": "2026-01-04T09:34:51Z",
+            "category": {
+                "__CLASS__": "Adzuna::API::Response::Category",
+                "tag": "it-jobs",
+                "label": "IT Jobs"
+            },
+            "title": "Developer",
+            "description": "TCS is Hiring For Android Jetpack compose Experience: 5 to 7 Years Location: Pune Role : Android Lead/Developer Skill : .Android Jetpack compose Note: Pls apply only Required Experience! (Interview Mode : Walk in Drive! -Date : 10-Jan-26(Saturday) Time : 9:30 AM - 1:00 PM Address : TCS - Pune Tata Consultancy Services Ltd , A1 Interview Area, Sahyadri Park 1, Tata Consultancy Services, Gate 1, Hinjewadi Phase 3, Pune-411057 On- Venue SPOC : Neelam Chhabra/Kunjamma Bitty Role Overview : As a Sen…",
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJpIjoiNTU2Njc2NzE5OSIsInMiOiJQbG9lNmpIcThCR1BmYWZ6eXZ3VXh3In0.tUl4vZ2xXj0ozBHteOXuYI5Egx1IwDRp8zbzJ58Z0WU",
+            "latitude": 18.5062,
+            "location": {
+                "display_name": "Pune, Maharashtra",
+                "area": [
+                    "India",
+                    "Maharashtra",
+                    "Pune"
+                ],
+                "__CLASS__": "Adzuna::API::Response::Location"
+            },
+            "longitude": 73.84735,
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "id": "5566767199",
+            "salary_is_predicted": "0"
+        },
+        {
+            "category": {
+                "__CLASS__": "Adzuna::API::Response::Category",
+                "tag": "it-jobs",
+                "label": "IT Jobs"
+            },
+            "company": {
+                "__CLASS__": "Adzuna::API::Response::Company",
+                "display_name": "ITC Infotech"
+            },
+            "created": "2025-12-31T10:35:40Z",
+            "redirect_url": "https://www.adzuna.in/land/ad/5560712191?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=6494D6C0DE1B5E750F18A6187F402A7A66AA7B02",
+            "location": {
+                "display_name": "Kolkata, West Bengal",
+                "__CLASS__": "Adzuna::API::Response::Location",
+                "area": [
+                    "India",
+                    "West Bengal",
+                    "Kolkata"
+                ]
+            },
+            "longitude": 88.34373,
+            "salary_is_predicted": "0",
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "id": "5560712191",
+            "description": "Job Title: .NET Developer Experience: 4–6 Years Location: Kolkata (Onsite/Hybrid) Interview mode- 1st round virtual and final round will be Face to face discussion. Job Description We are looking for an experienced .NET Developer with 4–6 years of hands-on experience in designing, developing, and maintaining web-based and enterprise applications. The ideal candidate should be proficient in Microsoft technologies and capable of working independently as well as in a team-oriented environment. Key…",
+            "title": "Developer",
+            "latitude": 22.57285,
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJzIjoiUGxvZTZqSHE4QkdQZmFmenl2d1V4dyIsImkiOiI1NTYwNzEyMTkxIn0.2NhyY-2_vvwm4nQbYU7VnsUetkdfV-mmA1kZAeEFSUA"
+        },
+        {
+            "category": {
+                "__CLASS__": "Adzuna::API::Response::Category",
+                "tag": "it-jobs",
+                "label": "IT Jobs"
+            },
+            "created": "2025-12-26T08:40:44Z",
+            "company": {
+                "display_name": "Tata Consultancy Services",
+                "__CLASS__": "Adzuna::API::Response::Company"
+            },
+            "redirect_url": "https://www.adzuna.in/land/ad/5556103938?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=E06B22CD61A90820B1972897193A77E3FBAA4C2D",
+            "salary_is_predicted": "0",
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "id": "5556103938",
+            "location": {
+                "area": [
+                    "India",
+                    "Karnataka",
+                    "Bangalore"
+                ],
+                "__CLASS__": "Adzuna::API::Response::Location",
+                "display_name": "Bangalore, Karnataka"
+            },
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJpIjoiNTU1NjEwMzkzOCIsInMiOiJQbG9lNmpIcThCR1BmYWZ6eXZ3VXh3In0.r3PD1uBkv-DC5cESqZ5II7W-qpHYRkFWjFfGzHaxSzk",
+            "description": "Locations: Bangalore, Hyderabad, Chennai Experience: 5-10 Years Role: Java Developer Must-Have: Java Microservices Spring boot Responsibility: Should understand the complexity nature of the business problems and requirements. Design highly scalable software solutions to improve functionality and system longevity. Develop modules of the initial enterprise system plan and work with the development team by coding advanced portions of the modules. Plan and execute all deployment of system features …",
+            "title": "Developer"
+        },
+        {
+            "redirect_url": "https://www.adzuna.in/land/ad/5546614746?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=49B98CCD9722C147659AA1DCB57F795E9FF833D5",
+            "company": {
+                "display_name": "Tata Consultancy Services",
+                "__CLASS__": "Adzuna::API::Response::Company"
+            },
+            "created": "2025-12-18T08:46:33Z",
+            "category": {
+                "__CLASS__": "Adzuna::API::Response::Category",
+                "tag": "it-jobs",
+                "label": "IT Jobs"
+            },
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJpIjoiNTU0NjYxNDc0NiIsInMiOiJQbG9lNmpIcThCR1BmYWZ6eXZ3VXh3In0.ZAJt_1e6BhAWDX-XtXdevohB1URhRrFlA78sPw1VAis",
+            "latitude": 23.4896,
+            "title": "Developer",
+            "description": "TCS Hiring for Full Stack Developer - React JS  Node JS Role! TCS presents an excellent opportunity for Full Stack Developer - React JS  Node JS Job Title: Full Stack Developer - React JS  Node JS Work Location: Gandhinagar Experience Range: 5 to 10 years Mode of Interview : Walk - In Only if you meet the requirement please do apply",
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "id": "5546614746",
+            "salary_is_predicted": "0",
+            "location": {
+                "area": [
+                    "India",
+                    "Gujarat",
+                    "Gandhinagar"
+                ],
+                "__CLASS__": "Adzuna::API::Response::Location",
+                "display_name": "Gandhinagar, Gujarat"
+            },
+            "longitude": 72.645
+        },
+        {
+            "category": {
+                "tag": "it-jobs",
+                "label": "IT Jobs",
+                "__CLASS__": "Adzuna::API::Response::Category"
+            },
+            "company": {
+                "display_name": "Tata Consultancy Services",
+                "__CLASS__": "Adzuna::API::Response::Company"
+            },
+            "created": "2025-12-26T08:41:48Z",
+            "redirect_url": "https://www.adzuna.in/land/ad/5556104130?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=A79969CE0F776A1AF41BBC7FC81BA1F8631EFC5F",
+            "salary_is_predicted": "0",
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "id": "5556104130",
+            "location": {
+                "__CLASS__": "Adzuna::API::Response::Location",
+                "area": [
+                    "India",
+                    "Karnataka",
+                    "Bangalore"
+                ],
+                "display_name": "Bangalore, Karnataka"
+            },
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJpIjoiNTU1NjEwNDEzMCIsInMiOiJQbG9lNmpIcThCR1BmYWZ6eXZ3VXh3In0._hCNisGk-4E0XO3AbxM_qKragQGB5NFTvsa78NpavH4",
+            "description": "Locations: PAN INDIA Experience: 6-10 Years Role: JAVA Full Stack Developer Must-Have: JAVA Springboot J2EE Rest API Responsibility: Development, Implementation, Troubleshooting of JAVA/J2EE based application Knowledge of Spring framework, REST API, Design Patterns, Event driven design principles and Database Queries Have experience in maintaining applications using the Spark framework Work with different aspects of the Spark ecosystem, including Spark SQL, DataFrames, Datasets, and streaming o…",
+            "title": "Developer"
+        },
+        {
+            "category": {
+                "__CLASS__": "Adzuna::API::Response::Category",
+                "tag": "it-jobs",
+                "label": "IT Jobs"
+            },
+            "redirect_url": "https://www.adzuna.in/land/ad/5546620550?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=3948235E526D5F16F719717311269A2A712EEFEF",
+            "created": "2025-12-18T08:47:15Z",
+            "company": {
+                "__CLASS__": "Adzuna::API::Response::Company",
+                "display_name": "Tata Consultancy Services"
+            },
+            "location": {
+                "__CLASS__": "Adzuna::API::Response::Location",
+                "area": [
+                    "India",
+                    "Karnataka",
+                    "Bangalore"
+                ],
+                "display_name": "Bangalore, Karnataka"
+            },
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "id": "5546620550",
+            "salary_is_predicted": "0",
+            "title": "Developer",
+            "description": "TCS Hiring for Java full stack with react js Developer Role! TCS presents an excellent opportunity for Java full stack with react js Developer Role Job Title: Java full stack with react js Developer Work Location: Bangalore Experience Range: 5 to 10 yrs Mode of Interview : Walk -In Date of Virtual Interview: 20-11-2025 Only if you meet the requirement please do apply Desired Competencies (Technical/Behavioral Competency) Should have very good hands on in Microservices architecture to be deploye…",
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJpIjoiNTU0NjYyMDU1MCIsInMiOiJQbG9lNmpIcThCR1BmYWZ6eXZ3VXh3In0.w8jiTalzc_d42E1FhZnV_pFuUMW3LQ32QBuDzAmYvoI"
+        },
+        {
+            "redirect_url": "https://www.adzuna.in/land/ad/5546316718?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=70B8CB10B3143150CF51FD014041E764A1047E71",
+            "created": "2025-12-18T02:42:05Z",
+            "company": {
+                "__CLASS__": "Adzuna::API::Response::Company",
+                "display_name": "Tata Consultancy Services"
+            },
+            "contract_time": "full_time",
+            "category": {
+                "tag": "it-jobs",
+                "label": "IT Jobs",
+                "__CLASS__": "Adzuna::API::Response::Category"
+            },
+            "title": "Developer",
+            "description": "Dear Applicants, Greeting from TCS! TCS is conducting Virtual Interview on 20th Dec, Saturday Education: Minimum 15 years of full-time education (10th, 12th and Graduation) Role - Developer Skills - Databricks, Pyspark Location: Bangalore, HYD, Chennai Exp: 7yrs Mode of Interview: Virtual Date: 20th Dec, Saturday Time: 10:00 AM to 3:00 PM  JD~ Strong hands-on skills required on: 4 years of hands-on experience in development. Development experience in Azure – cloud technology – Function Apps, AP…",
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJpIjoiNTU0NjMxNjcxOCIsInMiOiJQbG9lNmpIcThCR1BmYWZ6eXZ3VXh3In0.byUnOWd1Iiaj_SU-yiTvyLV_mdosRQVbh1P32bKCrg8",
+            "location": {
+                "area": [
+                    "India",
+                    "Karnataka",
+                    "Bangalore"
+                ],
+                "__CLASS__": "Adzuna::API::Response::Location",
+                "display_name": "Bangalore, Karnataka"
+            },
+            "id": "5546316718",
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "salary_is_predicted": "0"
+        },
+        {
+            "company": {
+                "display_name": "VMC Soft Technologies, Inc",
+                "__CLASS__": "Adzuna::API::Response::Company"
+            },
+            "created": "2026-01-03T08:59:23Z",
+            "redirect_url": "https://www.adzuna.in/land/ad/5565605647?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=3FD6210CD5E7BE86B092227DD39578B7409DBB65",
+            "category": {
+                "__CLASS__": "Adzuna::API::Response::Category",
+                "tag": "it-jobs",
+                "label": "IT Jobs"
+            },
+            "description": "Role: Databricks Developer Location: Hyderabad, Mumbai,Bangalore Experience: 6–8 Years Primary Skill: Databricks (AWS Preferred) We are looking for an experienced Databricks Developer to join our team in Hyderabad. If you have strong hands-on expertise in Databricks, PySpark, and cloud platforms—especially AWS—and can work independently, this role is a great fit for you! Key Skills & Experience: Strong experience with AWS Databricks Proficiency in Databricks, PySpark, Python & SQL (minimum 3 ye…",
+            "title": "Developer",
+            "latitude": 17.40275,
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJzIjoiUGxvZTZqSHE4QkdQZmFmenl2d1V4dyIsImkiOiI1NTY1NjA1NjQ3In0.SxxfTDEVM7Dx2j3pUks4-bpN0GmCj-5XX-cNpJcJFvk",
+            "longitude": 78.50806,
+            "location": {
+                "__CLASS__": "Adzuna::API::Response::Location",
+                "area": [
+                    "India",
+                    "Telangana",
+                    "Hyderabad"
+                ],
+                "display_name": "Hyderabad, Telangana"
+            },
+            "salary_is_predicted": "0",
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "id": "5565605647"
+        },
+        {
+            "category": {
+                "label": "IT Jobs",
+                "tag": "it-jobs",
+                "__CLASS__": "Adzuna::API::Response::Category"
+            },
+            "redirect_url": "https://www.adzuna.in/land/ad/5546316581?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=B1823B3D2E3256FF76503B0A1B9CF69818CC8B5F",
+            "created": "2025-12-18T02:41:41Z",
+            "company": {
+                "__CLASS__": "Adzuna::API::Response::Company",
+                "display_name": "Tata Consultancy Services"
+            },
+            "id": "5546316581",
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "salary_is_predicted": "0",
+            "location": {
+                "display_name": "Bangalore, Karnataka",
+                "__CLASS__": "Adzuna::API::Response::Location",
+                "area": [
+                    "India",
+                    "Karnataka",
+                    "Bangalore"
+                ]
+            },
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJzIjoiUGxvZTZqSHE4QkdQZmFmenl2d1V4dyIsImkiOiI1NTQ2MzE2NTgxIn0.Iwhz-j_l_HGJlD5J_rc221UVVh0kmG09S7b8eCf36kE",
+            "title": "Developer",
+            "description": "Role - Developer - AI/ML,Python Required Technical Skill Set - AI/ML,Python Experience Range - 4 to 7 years Location - Bangalore JD: Understand business process/ business problems and device Machine Learning solutions to optimize business processes wherever possible. Formulating machine learning solutions to business metrics, designing features from the data available from many large data sources, training, evaluating, and deploying models in production Developing high-performance algorithms fo…"
+        },
+        {
+            "title": "Developer",
+            "description": "TCS is Hiring For React JS Experience: 3 - 10 Location: Bhubaneswar Role : Senior Developer Skill : React JS, Typescript, JavaScript, HTML, CSS. (Interview Mode : Walk in Drive! -Date : 10-Jan-26(Saturday) Time : 9:30 AM - 1:00 PM Address : TCS - Bhubaneswar Tata Consultancy Services Ltd , Plot No-35, SEZ Road Chandaka Industrial Estate Chandrasekharpur, Barabati Building, Infocity, Patia, Bhubaneswar - 751024 On- Venue SPOC : Aishwarya Tripathy Desired Competencies (Technical/Behavioral Compet…",
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJpIjoiNTU2Njc2Njc3MiIsInMiOiJQbG9lNmpIcThCR1BmYWZ6eXZ3VXh3In0.gxJT7Iq5AohEVUPIVNBVDtIwfHMJO8baa-Y9GlYW65o",
+            "location": {
+                "display_name": "India",
+                "__CLASS__": "Adzuna::API::Response::Location",
+                "area": [
+                    "India"
+                ]
+            },
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "id": "5566766772",
+            "salary_is_predicted": "0",
+            "redirect_url": "https://www.adzuna.in/land/ad/5566766772?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=9B677F342250C68D13618D20E260D54DA850EAE0",
+            "company": {
+                "display_name": "Tata Consultancy Services",
+                "__CLASS__": "Adzuna::API::Response::Company"
+            },
+            "created": "2026-01-04T09:34:01Z",
+            "category": {
+                "label": "IT Jobs",
+                "tag": "it-jobs",
+                "__CLASS__": "Adzuna::API::Response::Category"
+            }
+        },
+        {
+            "description": "TCS is Hiring For Digital : Spring Boot Experience: 6 to 8 Years Location: Chennai ,Kochi Role :Senior Developer/Technical lead Skill : Java Springboot Microservices Note: Pls apply only Required Experience! Desired Competencies (Technical/Behavioral Competency) Must-Have Java 8 , Spring Boot, REST API and Microservices development with hands-on coding experience Data structures implementation and optimization Multi-threading, concurrency, and error-handling Good to Have Databases-MySQL/Oracle.…",
+            "title": "Developer",
+            "latitude": 13.06041,
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJzIjoiUGxvZTZqSHE4QkdQZmFmenl2d1V4dyIsImkiOiI1NTQ5NTAyNjQ0In0.9xObZa2-55kdeqIKoCreECSGxKc2Go2LMKX8KnJWSRs",
+            "longitude": 80.24963,
+            "location": {
+                "display_name": "Chennai, Tamil Nadu",
+                "__CLASS__": "Adzuna::API::Response::Location",
+                "area": [
+                    "India",
+                    "Tamil Nadu",
+                    "Chennai"
+                ]
+            },
+            "salary_is_predicted": "0",
+            "id": "5549502644",
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "company": {
+                "display_name": "Tata Consultancy Services",
+                "__CLASS__": "Adzuna::API::Response::Company"
+            },
+            "created": "2025-12-20T09:06:29Z",
+            "redirect_url": "https://www.adzuna.in/land/ad/5549502644?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=974F383CCD549799D2DB2728DDF06309DF1B2198",
+            "category": {
+                "tag": "it-jobs",
+                "label": "IT Jobs",
+                "__CLASS__": "Adzuna::API::Response::Category"
+            }
+        },
+        {
+            "id": "5534287639",
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "salary_is_predicted": "0",
+            "location": {
+                "__CLASS__": "Adzuna::API::Response::Location",
+                "area": [
+                    "India",
+                    "Delhi"
+                ],
+                "display_name": "Delhi, India"
+            },
+            "longitude": 77.224601,
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJpIjoiNTUzNDI4NzYzOSIsInMiOiJQbG9lNmpIcThCR1BmYWZ6eXZ3VXh3In0.vUd082suLjYvuXEiUECTtm8vzLioMAev4gT9mze6IiU",
+            "latitude": 28.62523,
+            "title": "Developer",
+            "description": "Locations: PAN INDIA Experience: 6-8Years Role: DataStage Developer/DataStage Support SME Must-Have: IBM DataStage Unix SQL Good IBM DataStage experience Good SQL knowledge Good knowledge in Unix/Linux Responsibility: 3 Years of experience as a DataStage developer or support SME Excellent problem solving and troubleshooting expertise. Good knowledge in SQL Analyze existing Infrastructure and DataStage jobs, ensuring best practices are being followed, and recommending short term and long-term im…",
+            "category": {
+                "__CLASS__": "Adzuna::API::Response::Category",
+                "label": "IT Jobs",
+                "tag": "it-jobs"
+            },
+            "redirect_url": "https://www.adzuna.in/land/ad/5534287639?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=FCA07A767095A4DFF1E48D52A317E4C17267BDB9",
+            "company": {
+                "__CLASS__": "Adzuna::API::Response::Company",
+                "display_name": "Tata Consultancy Services"
+            },
+            "created": "2025-12-09T09:06:30Z"
+        },
+        {
+            "salary_is_predicted": "0",
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "id": "5560712058",
+            "location": {
+                "__CLASS__": "Adzuna::API::Response::Location",
+                "area": [
+                    "India"
+                ],
+                "display_name": "India"
+            },
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJzIjoiUGxvZTZqSHE4QkdQZmFmenl2d1V4dyIsImkiOiI1NTYwNzEyMDU4In0.a8LExFxexsTX9PFAsLuIKw9EobcedJTZJD6c4xQaAr4",
+            "description": "Role - Scala Developer Required Technical Skill - Spark ,PySpark, Python, Hive, Scala, Unix shell scripting Desired Experience Range - 5years Location of Requirement - Pan India Must-Have 5 Years of experience with Developing/Fine tuning and implementing programs/applications Using Python/PySpark/Scala on Big Data/Hadoop Platform. Roles and Responsibilities: a) Work with a Leading Banks Risk Management team on specific projects/requirements pertaining to risk Models in consumer and wholesale ba…",
+            "title": "Developer",
+            "category": {
+                "__CLASS__": "Adzuna::API::Response::Category",
+                "tag": "it-jobs",
+                "label": "IT Jobs"
+            },
+            "company": {
+                "display_name": "Tata Consultancy Services",
+                "__CLASS__": "Adzuna::API::Response::Company"
+            },
+            "created": "2025-12-31T10:35:26Z",
+            "redirect_url": "https://www.adzuna.in/land/ad/5560712058?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=FFA4DC9A13DB4C39FFB05E017AEAC94229D786F7"
+        },
+        {
+            "category": {
+                "tag": "accounting-finance-jobs",
+                "label": "Accounting & Finance Jobs",
+                "__CLASS__": "Adzuna::API::Response::Category"
+            },
+            "created": "2025-12-31T10:35:22Z",
+            "company": {
+                "display_name": "Tata Consultancy Services",
+                "__CLASS__": "Adzuna::API::Response::Company"
+            },
+            "redirect_url": "https://www.adzuna.in/land/ad/5560712043?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=8F3A183377A1AFC5C1D72376C87E2F9F4C6746CD",
+            "salary_is_predicted": "0",
+            "id": "5560712043",
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "location": {
+                "area": [
+                    "India"
+                ],
+                "__CLASS__": "Adzuna::API::Response::Location",
+                "display_name": "India"
+            },
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJpIjoiNTU2MDcxMjA0MyIsInMiOiJQbG9lNmpIcThCR1BmYWZ6eXZ3VXh3In0.WW6FO1CxA9PNaWCR-yiECjIXTD5DBzjp-iDzc5Q2cBE",
+            "description": "Looking for candidates with 3–7 years of experience in model validation or model development for AML models or stress‑testing models (PD/LGD/EAD). The candidate should hold a Master’s degree in Statistics, Mathematics, or Economics, and possess strong knowledge of traditional statistical techniques as well as machine learning models. Location: Chennai – Siruseri Pune – Sahyadri Park Bengaluru – Global Axis Hyderabad – Adibatla Kolkata – Oval office About The Job As a Senior Quantitative Analyti…",
+            "title": "Developer"
+        },
+        {
+            "created": "2025-12-24T10:22:12Z",
+            "company": {
+                "__CLASS__": "Adzuna::API::Response::Company",
+                "display_name": "Natobotics technologies"
+            },
+            "redirect_url": "https://www.adzuna.in/land/ad/5553879145?se=Ploe6jHq8BGPfafzyvwUxw&utm_medium=api&utm_source=b11247f0&v=B3DB2915DC6C3E282701866F14F16290B5342C9D",
+            "category": {
+                "__CLASS__": "Adzuna::API::Response::Category",
+                "tag": "it-jobs",
+                "label": "IT Jobs"
+            },
+            "adref": "eyJhbGciOiJIUzI1NiJ9.eyJpIjoiNTU1Mzg3OTE0NSIsInMiOiJQbG9lNmpIcThCR1BmYWZ6eXZ3VXh3In0.2R96kqML-Azr2hMyuTRz53xgpKW2gtld7ln9PWmKphU",
+            "description": "Responsibilities Data pipeline development Design, build, and maintain robust and scalable data pipelines using tools like Apache Spark, Databricks, and Delta Lake. This includes handling both batch and real-time data. Performance optimization Optimize data processing workflows, Spark jobs, and Databricks clusters for speed and efficiency. Data quality and governance Implement data validation, perform quality checks, and enforce data governance, security, and compliance best practices. Collabor…",
+            "title": "Developer",
+            "salary_is_predicted": "0",
+            "id": "5553879145",
+            "__CLASS__": "Adzuna::API::Response::Job",
+            "location": {
+                "display_name": "India",
+                "__CLASS__": "Adzuna::API::Response::Location",
+                "area": [
+                    "India"
+                ]
+            }
+        }
+    ]
+}
