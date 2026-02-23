@@ -12,8 +12,8 @@ export default function Navbar() {
     const items = [
         {name: "Tech Skill Analayzer", url: "/" },
         {name: "Home", url: "/" },
-        // {name: "About", url: "/products" },
-        {name: "Recommended", url: "/recommended" },
+        {name: "About Us", url: "/about" },
+        {name: "Contact Us", url: "/contact" },
         {name: "Saved Plan", url: "/saved" },
     ];
 

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Skill, SkillTrend, Technology, Job
 
-# Register your models here.
+# Registering models here.
 admin.site.register(Skill)
 admin.site.register(SkillTrend)
 admin.site.register(Technology)

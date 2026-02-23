@@ -1,67 +1,59 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from django.db.models import Count, Sum
+from django.db.models import Count, Sum, Max
 
 from .models import Skill, SkillTrend
-from .serializers import SkillTrendSerializer
+from .serializers import SkillSerializer
 from recommendations.ml.recommender import recommend_skills
 
 
 # Create your views here.
 class TrendingSkills(APIView):
     def get(self, request):
-        trends = (
-            SkillTrend.objects
-            .values("skill__name")
-            .annotate(total=Sum("count"))
-            .order_by("-total")[:10]
-        )
-        return Response(trends)
+        skills = Skill.objects.all()
+        trending_skills = []
+
+        for skill in skills:
+            trends = skill.trends.order_by("year")
+
+            if trends.count() >= 2:
+                first = trends.first().count
+                last = trends.last().count
+
+                if last > first:   # 📈 Trending
+                    trending_skills.append({
+                        "skill_id": skill.skill_id,
+                        "name": skill.name,
+                        "first_year_count": first,
+                        "latest_year_count": last
+                    })
+
+        return Response(trending_skills)
+
         
 class ObsoleteSkills(APIView):
     def get(self, request):
-        data = []
+        skills = Skill.objects.all()
+        obsolete_skills = []
 
-        skill_ids = (
-            SkillTrend.objects
-            .values_list("skill_id", flat=True)
-            .distinct()
-        )
+        for skill in skills:
+            trends = skill.trends.order_by("year")
 
-        for skill_id in skill_ids:
-            trends = (
-                SkillTrend.objects
-                .filter(skill_id=skill_id)
-                .order_by("year")
-            )
+            if trends.count() >= 2:
+                first = trends.first().count
+                last = trends.last().count
 
-            # must have data for multiple years
-            if trends.count() < 2:
-                continue
+                if last < first:   # 📉 Declining
+                    obsolete_skills.append({
+                        "skill_id": skill.skill_id,
+                        "name": skill.name,
+                        "first_year_count": first,
+                        "latest_year_count": last
+                    })
 
-            first_count = trends.first().count
-            last_count = trends.last().count
-
-            total_count = sum(t.count for t in trends)  # 🔑 added
-
-            # 🔑 NEW RULES (MINIMAL + CORRECT)
-            if total_count < 30:
-                continue  # Insufficient data → NOT obsolete
-
-            if total_count >= 100:
-                continue  # High-demand skill → NEVER obsolete
-
-            # obsolete only if low-demand AND declining
-            if last_count < first_count:
-                data.append({
-                    "skill": trends.first().skill.name,
-                    "status": "Obsolete"
-                })
-
-        return Response(data)
-
-
+        return Response(obsolete_skills)
+    
 class RecommendSkills(APIView):
     def post(self, request):
         user_skills = request.data.get("skills", [])

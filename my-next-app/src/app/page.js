@@ -16,47 +16,52 @@ export default function Home() {
   return (
     <div>
       {/* HERO: matches wireframe; does NOT touch navbar */}
-      <section className="bg-white py-15">
+      <section className="bg-gradient-to-r from-[#41206f] via-[#55318a] to-[#356b84] py-20">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+          
           <div className="md:w-1/2">
-            {/* <div className="inline-flex items-center justify-center w-10 h-10 border rounded-md mb-6">AI</div> */}
-            <h1 className="text-2lg text-gray-800 md:text-5xl font-extrabold leading-tight mb-4">
+            <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-4 text-white">
               AI Skill Recommender System
             </h1>
-            <p className="text-lg text-gray-600 mb-8">
+
+            <p className="text-lg text-gray-200 mb-8">
               Find the best skill to stay up-to-date.
             </p>
+
             <button
               onClick={handleGetStarted}
-              className="bg-purple-600 border border-black-900 px-6 py-3 rounded-lg text-lg text-white-500 font-medium shadow-sm cursor-pointer hover:bg-purple-700 hover:shadow-md transition"
+              className="bg-[#6d3bbd] px-6 py-3 rounded-lg text-lg text-white font-medium shadow-md hover:bg-[#7c4dce] transition duration-300"
             >
               Get Started
             </button>
           </div>
 
           <div className="md:w-1/2 flex justify-center">
-              <div className="relative w-80 h-56">
-                <Image
-                  src="/ai skill recommender brain(gemini) image.png"
-                  alt="Profile"
-                  className="w-full h-full rounded shadow-sm object-cover"
-                />
-              </div>
+            <div className="relative w-[480px] h-[320px]">
+              <Image
+                src="/ai skill recommender brain image.png"
+                alt="AI Brain"
+                fill
+                className="rounded-xl shadow-lg object-cover"
+              />
             </div>
+          </div>
+
         </div>
       </section>
 
-    
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 bg-gray-50 py-16 px-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 bg-white py-16 px-6">
   
       {/* Card 1 */}
-      <div className="flex items-start gap-5 bg-gradient-to-br from-gray-100 to-gray-200 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+      <div className="flex items-start gap-5 bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
         
         <div className="w-14 h-14 flex items-center justify-center">
           <Image
             src="/ai home page card 1.png"
             alt="card icon"
-            className="w-full h-full object-contain"
+            width={56}
+            height={56}
+            className="object-contain"
           />
         </div>
 
@@ -72,12 +77,14 @@ export default function Home() {
       </div>
 
       {/* Card 2 */}
-      <div className="flex items-start gap-5 bg-gradient-to-br from-gray-100 to-gray-200 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+      <div className="flex items-start gap-5 bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
         
         <div className="w-14 h-14 flex items-center justify-center">
           <Image
             src="/ai home page card 2.png"
             alt="card icon"
+            width={56}
+            height={56}
             className="w-full h-full object-contain"
           />
         </div>
@@ -93,12 +100,14 @@ export default function Home() {
       </div>
 
       {/* Card 3 */}
-      <div className="flex items-start gap-5 bg-gradient-to-br from-gray-100 to-gray-200 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300">
+      <div className="flex items-start gap-5 bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
         
         <div className="w-14 h-14 flex items-center justify-center">
           <Image
             src="/ai home page card 3.png"
             alt="card icon"
+            width={56}
+            height={56}
             className="w-full h-full object-contain"
           />
         </div>
@@ -112,31 +121,28 @@ export default function Home() {
           </p>
         </div>
       </div>
-
     </div>
 
-
-
-      <section className="bg-white py-20">
+      <section className="bg-purple-50 py-20">
         <div className="max-w-6xl mx-auto px-8 flex flex-col md:flex-row items-center gap-12">
           <div className="md:w-1/2">
             {/* <div className="inline-flex items-center justify-center w-10 h-10 border rounded-md mb-6">AI</div> */}
-            <h1 className="text-4xl text-gray-800 md:text-5xl font-extrabold leading-tight mb-4">
-              Personalized Skill Recommendations
-              <br />
-              to Boost Your Professional Growth
+            <h1 className="text-3xl text-gray-800 md:text-4xl font-extrabold leading-tight mb-4">
+              Discover Your Skills with AI Recommendations & track risks 
             </h1>
             <p className="text-lg text-gray-600 mb-8">
-              Receive tailored suggestions on which skills to acquire based on
-              current industry trends and your career goals.
+              Let our AI guide you to the most relevant skills for your career growth 
+              and stay informed about potential risks in your industry.
             </p>
           </div>
 
-          <div className="relative w-80 h-56">
+          <div className="flex item-center justify-center">
           <Image
-            src="https://www.joinhgs.com/sites/default/files/inline-images/AI.png"
+            src="/ai skill recommender robot(Gemini) image.png"
             alt="Profile"
-            className="w-full h-full rounded shadow-sm object-cover"
+            width={500}
+            height={500}
+            className="object-contain"
           />
         </div>
         </div>
