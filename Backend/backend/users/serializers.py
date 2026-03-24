@@ -1,7 +1,9 @@
-from rest_framework import serializers
-from .models import UserProfile
+from rest_framework import serializers 
+from .models import UserProfile 
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserProfile
-        fields = "__all__"
+    skills = serializers.JSONField()
+     
+    class Meta: 
+        model = UserProfile 
+        fields = ['id', 'user', 'skills', 'profile_picture', 'gender', 'profession']

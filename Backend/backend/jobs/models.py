@@ -33,13 +33,13 @@ class SkillTrend(models.Model):
         related_name='trends'
     )
 
-    # Links skill demand to a specific job posting 
-    job = models.ForeignKey(
-        Job, 
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True
-    )
+    # # Links skill demand to a specific job posting 
+    # job = models.ForeignKey(
+    #     Job, 
+    #     on_delete=models.CASCADE,
+    #     null=True,
+    #     blank=True
+    # )
 
     # Time-based tracking for trend-analysis
     year = models.IntegerField(default=datetime.datetime.now().year)
@@ -47,6 +47,13 @@ class SkillTrend(models.Model):
 
     # Number of times the skill was appeared in job postings
     count = models.IntegerField(default=0)
+
+    class Meta:
+        # Ensures that each skill has only one entry per month and year for accurate trend tracking
+        unique_together = ('skill', 'year', 'month')
+
+        # Orders the trends by most recent first
+        ordering = ['-year', '-month']  
 
     def __str__(self):
         return f"{self.skill.name} - {self.year}"

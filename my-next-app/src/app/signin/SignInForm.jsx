@@ -9,13 +9,13 @@ export default function SignInForm({ form, onChange, onSubmit }) {
         
         <form onSubmit={onSubmit} className="mt-6 space-y-5">
           <div>
-            <label className="text-lg text-gray-600 block mb-1">Email</label>
+            <label className="text-lg text-gray-600 block mb-1">Username</label>
             <input
-              type="email"
-              name="email"
-              value={form.email}
+              type="username"
+              name="username"
+              value={form.username}
               onChange={onChange}
-              placeholder="  abc@gmail.com"
+              placeholder="abc"
               className="text-gray-600 w-full border border-gray-500 rounded-xl py-2 focus:outline-none"
             />
           </div>
