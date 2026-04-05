@@ -1,119 +1,148 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+// import { Button } from "@/components/ui/button";
 
 export default function AboutPage() {
   return (
-    <div className="relative w-full bg-white text-gray-900 overflow-hidden">
-
-      {/* Background Glow Effects */}
-      <div className="absolute top-20 left-10 w-96 h-96 bg-indigo-400/20 rounded-full blur-3xl -z-10"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl -z-10"></div>
+    <div className="min-h-screen bg-gradient-to-br from-white via-purple-50 to-blue-50 text-gray-900">
+      {/* NAVBAR
+      <nav className="flex justify-between items-center px-10 py-4 bg-white/70 backdrop-blur-md shadow-sm">
+        <h1 className="text-xl font-bold">Tech Skill Analyzer</h1>
+        <div className="flex gap-6 items-center">
+          <a href="#">Home</a>
+          <a href="#" className="text-purple-600 font-semibold">About Us</a>
+          <a href="#">Contact</a>
+          <Button className="rounded-full">Sign In</Button>
+        </div>
+      </nav> */}
 
       {/* HERO SECTION */}
-      <section className="min-h-screen flex flex-col justify-center items-center text-center px-6">
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+      <section className="text-center py-28 px-6">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="text-5xl md:text-7xl font-bold leading-tight tracking-tight"
+          className="text-sm tracking-widest text-purple-500 mb-4"
         >
-          Don't Chase Trends.
-          <br />
-          <span className="bg-gradient-to-r from-indigo-600 to-purple-600 text-transparent bg-clip-text">
-            Predict Them.
+          MAXIMIZE YOUR POTENTIAL WITH AI
+        </motion.p>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-5xl md:text-6xl font-bold leading-tight"
+        >
+          Empowering Careers <br />
+          <span className="bg-gradient-to-r from-purple-500 to-blue-500 text-transparent bg-clip-text">
+            with AI
           </span>
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.7 }}
-          className="mt-8 max-w-2xl text-lg text-gray-600 leading-relaxed"
-        >
-          AI-powered intelligence that anticipates technological shifts and
-          recommends future-proof skills before they become essential.
-        </motion.p>
-
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.98 }}
-          className="mt-10 px-8 py-4 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold shadow-xl"
-        >
-          Explore Intelligence
-        </motion.button>
-      </section>
-
-      {/* PROBLEM SECTION */}
-      <section className="py-32 px-6 max-w-5xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-6">
-          Skills Expire Faster Than Degrees
-        </h2>
-        <p className="text-gray-600 text-lg leading-relaxed">
-          Technology evolves at unprecedented speed. Traditional education
-          systems struggle to keep pace, leaving professionals uncertain about
-          which skills will remain relevant in the next five years.
+        <p className="mt-6 max-w-2xl mx-auto text-gray-600">
+          We help students and professionals identify skill gaps and stay ahead
+          in a rapidly evolving tech landscape using AI-driven insights.
         </p>
       </section>
 
-      {/* SOLUTION SECTION */}
-      <section className="py-32 bg-gray-50 px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-12">
-            Intelligence That Anticipates Change
+      {/* MISSION SECTION */}
+      <section className="relative py-32 px-6 text-center overflow-hidden min-h-[500px]">
+
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/mountain.jpg"
+            alt="mission"
+            className="w-full h-full object-cover"
+          />
+          
+          {/* Soft overlay (NO BLUR) */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/40 to-white"></div>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10">
+          <h2 className="text-7xl md:text-8xl font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-transparent bg-clip-text">
+            Our Mission
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-10">
-            {[
-              "Real-time job market intelligence",
-              "Predictive tech obsolescence modeling",
-              "Personalized AI-driven skill roadmaps",
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 hover:-translate-y-2 transition"
-              >
-                <p className="text-gray-700 text-lg">{item}</p>
-              </motion.div>
-            ))}
-          </div>
+          <p className="mt-8 max-w-3xl mx-auto text-gray-900 text-lg leading-relaxed">
+            Our mission is to bridge the gap between current skills and industry demand
+            by using intelligent AI systems that guide users toward the most relevant
+            and future-proof skills.
+          </p>
+        </div>
+
+      </section>
+
+      {/* PROBLEM + SOLUTION */}
+      <section className="py-20 px-6">
+        <h2 className="text-3xl font-bold text-center mb-12">
+          Bridging the Skill Gap with AI
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {[
+            {
+              title: "Skill Gap",
+              desc: "Skills are evolving faster than people can keep up.",
+            },
+            {
+              title: "Outdated Knowledge",
+              desc: "Many learners rely on outdated technologies.",
+            },
+            {
+              title: "Career Confusion",
+              desc: "Students don’t know what to learn next.",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="p-6 rounded-2xl bg-white/60 backdrop-blur-md shadow-md"
+            >
+              <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
+              <p className="text-sm text-gray-600">{item.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* FEATURES SECTION */}
-      <section className="py-32 px-6 max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-16">
-          Core Innovation Engine
+      {/* HOW AI WORKS */}
+      <section className="py-20 px-6 bg-white/40 backdrop-blur-md">
+        <h2 className="text-3xl font-bold text-center mb-12">
+          How AI Works
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto text-center">
           {[
-            "Tech Obsolescence Prediction Engine",
-            "Personalized AI Skill Recommendation",
-            "Industry Demand Analytics Dashboard",
-            "Resume Skill Gap Analyzer",
-            "Trend Forecasting Model",
-            "Data-Driven Career Intelligence",
-          ].map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:-translate-y-3 transition"
+            "Input Your Profile",
+            "AI Analysis",
+            "Market Comparison",
+            "Skill Recommendations",
+          ].map((step, i) => (
+            <div
+              key={i}
+              className="p-5 rounded-2xl bg-white shadow-md"
             >
-              <h3 className="font-semibold text-xl mb-3">{feature}</h3>
-              <p className="text-gray-600">
-                Built on predictive modeling and intelligent data analysis.
-              </p>
-            </motion.div>
+              <div className="text-2xl font-bold text-purple-500 mb-2">
+                {i + 1}
+              </div>
+              <p className="text-sm font-medium">{step}</p>
+            </div>
           ))}
         </div>
+      </section>
+
+      {/* FUTURE VISION */}
+      <section className="py-20 px-6 text-center">
+        <h2 className="text-4xl font-bold mb-6">
+          Our Vision for the Future
+        </h2>
+        <p className="max-w-2xl mx-auto text-gray-600">
+          We aim to build a system where AI predicts future skill trends,
+          provides real-time career guidance, and helps individuals stay ahead
+          in the global job market.
+        </p>
       </section>
     </div>
   );

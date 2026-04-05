@@ -6,20 +6,40 @@ export default function Skills() {
   const [newSkill, setNewSkill] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // ✅ Keep everything lowercase for perfect matching
   const skillCategories = {
-    frontend: ["React", "Next.js", "HTML", "CSS", "JavaScript"],
-    backend: ["Django", "Node.js", "Express", "REST API"],
-    ai: ["Python", "Machine Learning", "Deep Learning"],
+    frontend: ["react", "next.js", "html", "css", "javascript"],
+    backend: ["django", "node.js", "express", "rest api"],
+    ai: ["python", "machine learning", "deep learning"],
   };
 
+  // ✅ Normalize function (core fix)
+  const normalize = (skill) => skill.toLowerCase().trim();
+
+  // ✅ Capitalize for UI only
+  const formatSkill = (skill) => {
+    return skill
+      .toLowerCase()
+      .split(" ")
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
+
+  // ✅ Fixed progress calculation
   const calculateProgress = () => {
     const result = {};
+    const normalizedSkills = skills.map(normalize);
 
     for (let category in skillCategories) {
       const required = skillCategories[category];
-      const matched = required.filter(skill => skills.includes(skill));
 
-      result[category] = Math.round((matched.length / required.length) * 100);
+      const matched = required.filter(skill =>
+        normalizedSkills.includes(skill)
+      );
+
+      result[category] = Math.round(
+        (matched.length / required.length) * 100
+      );
     }
 
     return result;
@@ -27,6 +47,7 @@ export default function Skills() {
 
   const progress = calculateProgress();
 
+  // ✅ Fetch skills from backend
   useEffect(() => {
     const fetchSkills = async () => {
       try {
@@ -39,7 +60,16 @@ export default function Skills() {
         });
 
         const data = await res.json();
-        setSkills(data.skills || []);
+
+        // normalize while storing
+        const skillsArray = Array.isArray(data.skills)
+          ? data.skills
+          : typeof data.skills === 'string'
+          ? data.skills.split(',').map(s => s.trim())
+          : [];
+        const normalized = skillsArray.map(s => normalize(s));
+        setSkills(normalized);
+
       } catch (err) {
         console.error(err);
       }
@@ -48,17 +78,15 @@ export default function Skills() {
     fetchSkills();
   }, []);
 
-  const formatSkill = (skill) => {
-    return skill.charAt(0).toUpperCase() + skill.slice(1).toLowerCase();
-  };
-
+  // ✅ Add skill
   const handleAddSkill = async () => {
     if (!newSkill.trim()) return;
 
-    const formatted = formatSkill(newSkill.trim());
-    if (skills.includes(formatted)) return;
+    const normalized = normalize(newSkill);
 
-    const updatedSkills = [...skills, formatted];
+    if (skills.includes(normalized)) return;
+
+    const updatedSkills = [...skills, normalized];
     setLoading(true);
 
     try {
@@ -82,6 +110,7 @@ export default function Skills() {
     }
   };
 
+  // ✅ Remove skill
   const handleRemoveSkill = async (skillToRemove) => {
     const updatedSkills = skills.filter(s => s !== skillToRemove);
     setLoading(true);
@@ -107,8 +136,8 @@ export default function Skills() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 py-10 px-4">
-      <div className="max-w-3xl mx-auto bg-white/80 backdrop-blur-lg border border-gray-200 rounded-3xl shadow-2xl p-8">
+    <div className="min-h-screen bg-gray-100 px-8 py-10">
+      <div className="w-full max-w-5xl mx-auto bg-white border border-gray-200 rounded-3xl shadow-lg p-8">
 
         <h2 className="text-2xl font-bold text-gray-800 mb-2">Your Skills</h2>
         <p className="text-gray-500 mb-6">Manage your current tech stack</p>
@@ -120,7 +149,7 @@ export default function Skills() {
               key={index}
               className="flex items-center gap-2 bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-4 py-1.5 rounded-full shadow-md hover:scale-105 transition"
             >
-              <span>{skill}</span>
+              <span>{formatSkill(skill)}</span>
               <button onClick={() => handleRemoveSkill(skill)}>✕</button>
             </div>
           ))}
@@ -149,11 +178,16 @@ export default function Skills() {
           <h3 className="text-lg font-semibold text-gray-800 mb-4">
             Skill Progress
           </h3>
+
           {Object.keys(progress).map((category) => (
             <div key={category}>
               <div className="flex justify-between mb-1">
-                <span className="capitalize font-medium text-gray-700">{category}</span>
-                <span className="text-sm text-gray-500">{progress[category]}%</span>
+                <span className="capitalize font-medium text-gray-700">
+                  {category}
+                </span>
+                <span className="text-sm text-gray-500">
+                  {progress[category]}%
+                </span>
               </div>
 
               <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">

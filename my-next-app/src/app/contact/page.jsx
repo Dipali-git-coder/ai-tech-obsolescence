@@ -22,7 +22,7 @@ export default function ContactPage() {
           </p>
 
           <div className="mt-8 space-y-4 text-gray-700">
-            <p>📧 Email: dipalibangal@example.com</p>
+            <p>📧 Email: dipalibangal32@gmail.com</p>
             <p>🎓 Bachelor of Information Technology</p>
             <p>🤖 Focused on AI & Machine Learning Solutions</p>
           </div>

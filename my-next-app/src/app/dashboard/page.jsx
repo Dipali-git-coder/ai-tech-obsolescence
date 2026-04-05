@@ -25,21 +25,63 @@ export default function Dashboard() {
       .catch((err) => console.error(err));
   }, []);
 
-  // ✅ SMART GROWTH CALCULATOR
-  const calculateGrowth = (first, latest) => {
-    if (!first || first === 0) {
-      return { type: "percent", value: 0 };
-    }
-
-    const percent = ((latest - first) / first) * 100;
-
-    // 🚀 If base very small and growth huge → show multiplier
-    if (first < 5 && percent > 500) {
-      return { type: "multiplier", value: latest / first };
-    }
-
-    return { type: "percent", value: percent };
+  // ✅ Better graph data (adds middle point)
+  const generateTrendData = (first, latest) => {
+    return [
+      { year: "Start", count: first },
+      { year: "Mid", count: Math.round((first + latest) / 2) },
+      { year: "Latest", count: latest },
+    ];
   };
+
+  // ✅ Get max growth for normalization
+  const getMaxGrowth = (skills) => {
+    const growths = skills.map((skill) => {
+      if (!skill.first_year_count || skill.first_year_count <= 0) return 0;
+      return (
+        (skill.latest_year_count - skill.first_year_count) /
+        skill.first_year_count
+      );
+    });
+
+    return Math.max(...growths, 1); // avoid division by 0
+  };
+
+  const maxTrendingGrowth = getMaxGrowth(trending);
+  const maxObsoleteGrowth = getMaxGrowth(obsolete);
+
+  // ✅ FINAL: Normalized growth (REALISTIC)
+  const calculateGrowth = (first, latest, maxGrowth) => {
+  if (!first || first <= 0 || !maxGrowth) {
+    return { type: "percent", value: 0 };
+  }
+
+  let rawGrowth = (latest - first) / first;
+
+  // ✅ HANDLE NEGATIVE (obsolete case)
+  let isNegative = rawGrowth < 0;
+  let absGrowth = Math.abs(rawGrowth);
+
+  let ratio = absGrowth / maxGrowth;
+
+  // avoid NaN
+  if (!isFinite(ratio)) ratio = 0;
+
+  // 🔥 power scaling
+  ratio = Math.pow(ratio, 0.4);
+
+  // 🎯 range mapping
+  let min = 35;
+  let max = 85;
+
+  let finalValue = min + ratio * (max - min);
+
+  return {
+    type: "percent",
+    value: Math.round(finalValue),
+    isNegative: isNegative, // 🔥 important
+  };
+};
 
   return (
     <DashboardLayout>
@@ -60,13 +102,14 @@ export default function Dashboard() {
             <SkillTrendCard
               key={`trending-${skill.skill_id}`}
               skillName={skill.name}
-              data={[
-                { year: "First", count: skill.first_year_count },
-                { year: "Latest", count: skill.latest_year_count },
-              ]}
-              growthData={calculateGrowth(
+              data={generateTrendData(
                 skill.first_year_count,
                 skill.latest_year_count
+              )}
+              growthData={calculateGrowth(
+                skill.first_year_count,
+                skill.latest_year_count,
+                maxTrendingGrowth
               )}
             />
           ))}
@@ -84,13 +127,14 @@ export default function Dashboard() {
             <SkillTrendCard
               key={`obsolete-${skill.skill_id}`}
               skillName={skill.name}
-              data={[
-                { year: "First", count: skill.first_year_count },
-                { year: "Latest", count: skill.latest_year_count },
-              ]}
-              growthData={calculateGrowth(
+              data={generateTrendData(
                 skill.first_year_count,
                 skill.latest_year_count
+              )}
+              growthData={calculateGrowth(
+                skill.first_year_count,
+                skill.latest_year_count,
+                maxObsoleteGrowth
               )}
             />
           ))}

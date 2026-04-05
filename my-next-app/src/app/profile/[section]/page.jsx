@@ -8,7 +8,7 @@ export default async function ProfileSection({ params}){
     const { section } = await params;
 
     return (
-        <div className="min-h-screen bg-gray-100 flex justify-center items-start py-10">
+        <div className="min-h-screen bg-gray-100 py-10">
             
             {section === "skills" && <Skills />}
             {section === "recommendations" && <Recommendations />}

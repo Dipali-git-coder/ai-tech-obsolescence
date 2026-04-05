@@ -10,8 +10,6 @@ export default function Footer() {
 
         <div className="flex flex-col space-y-1 text-center">
           <Link href="/">Home</Link>
-          <Link href="/recommend">Recommended</Link>
-          <Link href="/saved">Saved Plan</Link>
           <Link href="/about">About</Link>
           <Link href="/contact">Contact Us</Link>
         </div>

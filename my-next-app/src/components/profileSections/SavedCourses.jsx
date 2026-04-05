@@ -1,52 +1,32 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-
-const initialCourses = [
-  {
-    id: 1,
-    title: "React for Beginners",
-    skill: "React",
-    duration: "8 hrs",
-    progress: 40,
-    status: "in-progress",
-    category: "Frontend Development",
-  },
-  {
-    id: 2,
-    title: "JavaScript Essentials",
-    skill: "JavaScript",
-    duration: "6 hrs",
-    progress: 0,
-    status: "not-started",
-    category: "Frontend Development",
-  },
-  {
-    id: 3,
-    title: "Machine Learning A-Z",
-    skill: "Machine Learning",
-    duration: "12 hrs",
-    progress: 100,
-    status: "completed",
-    category: "Data Science",
-  },
-  {
-    id: 4,
-    title: "Python for Data Analysis",
-    skill: "Python",
-    duration: "10 hrs",
-    progress: 30,
-    status: "in-progress",
-    category: "Data Science",
-  },
-];
+import { useState, useEffect } from "react";
 
 export default function SavedCourses() {
   const router = useRouter();
-  const [courses, setCourses] = useState(initialCourses);
+  const [courses, setCourses] = useState([]);
+
+  // ✅ Fetch from localStorage
+  useEffect(() => {
+    const email = localStorage.getItem("userEmail");
+    if (!email) return;
+    const savedCourses =
+      JSON.parse(localStorage.getItem(`savedCourses_${email}`)) || [];
+    setCourses(savedCourses);
+  }, []);
+
+  // ✅ Remove course
+  const handleRemove = (id) => {
+    const email = localStorage.getItem("email");
+    if (!email) return;
+    const updated = courses.filter((course) => course.id !== id);
+    setCourses(updated);
+    localStorage.setItem(`savedCourses_${email}`, JSON.stringify(updated));
+  };
 
   const hasCourses = courses.length > 0;
 
+  // ✅ Empty state
   if (!hasCourses) {
     return (
       <div className="flex flex-col items-center justify-center h-[70vh] text-center">
@@ -54,7 +34,7 @@ export default function SavedCourses() {
           Haven't saved any courses yet
         </h2>
         <button
-          onClick={() => router.push("/recommended")}
+          onClick={() => router.push("/profile/recommended-courses")}
           className="mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
         >
           Browse Courses
@@ -63,6 +43,7 @@ export default function SavedCourses() {
     );
   }
 
+  // ✅ Group by category
   const grouped = courses.reduce((acc, course) => {
     if (!acc[course.category]) acc[course.category] = [];
     acc[course.category].push(course);
@@ -108,7 +89,7 @@ export default function SavedCourses() {
 
       {/* Main Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Courses */}
+        {/* Courses Section */}
         <div className="lg:col-span-2 space-y-6">
           {Object.keys(grouped).map((category) => (
             <div key={category}>
@@ -120,15 +101,25 @@ export default function SavedCourses() {
                 {grouped[category].map((course) => (
                   <div
                     key={course.id}
-                    className="border rounded-xl p-4 bg-white shadow-sm"
+                    className="border rounded-xl p-4 bg-white shadow-sm hover:shadow-md transition"
                   >
+                    {/* ✅ Thumbnail */}
+                    {course.thumbnail && (
+                      <img
+                        src={course.thumbnail}
+                        alt={course.title}
+                        className="w-full h-40 object-cover rounded-lg mb-3"
+                      />
+                    )}
+
+                    {/* Title */}
                     <h3 className="font-semibold text-lg text-gray-800">
                       {course.title}
                     </h3>
-                    <p className="text-sm text-gray-500">
-                      {course.skill}
-                    </p>
 
+                    <p className="text-sm text-gray-500">{course.skill}</p>
+
+                    {/* Info */}
                     <div className="flex justify-between text-sm mt-2 text-gray-600">
                       <span>{course.duration}</span>
                       <span>
@@ -140,6 +131,7 @@ export default function SavedCourses() {
                       </span>
                     </div>
 
+                    {/* Progress */}
                     <div className="w-full bg-gray-200 h-2 rounded-full mt-2">
                       <div
                         className="bg-blue-500 h-2 rounded-full"
@@ -147,22 +139,36 @@ export default function SavedCourses() {
                       />
                     </div>
 
+                    {/* Buttons */}
                     <div className="flex gap-3 mt-4">
                       {course.status === "completed" ? (
                         <button className="bg-blue-600 text-white px-4 py-2 rounded-lg">
                           View Certificate
                         </button>
                       ) : course.status === "not-started" ? (
-                        <button className="bg-green-600 text-white px-4 py-2 rounded-lg">
+                        <a
+                          href={course.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-green-600 text-white px-4 py-2 rounded-lg"
+                        >
                           Start
-                        </button>
+                        </a>
                       ) : (
-                        <button className="bg-blue-600 text-white px-4 py-2 rounded-lg">
+                        <a
+                          href={course.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-blue-600 text-white px-4 py-2 rounded-lg"
+                        >
                           Continue
-                        </button>
+                        </a>
                       )}
 
-                      <button className="border px-4 py-2 rounded-lg text-red-500">
+                      <button
+                        onClick={() => handleRemove(course.id)}
+                        className="border px-4 py-2 rounded-lg text-red-500"
+                      >
                         Remove
                       </button>
                     </div>
@@ -181,7 +187,7 @@ export default function SavedCourses() {
               Recommended Next Step
             </p>
             <p className="text-sm text-gray-600 mt-1">
-              You should prioritize the React course based on your skill gap.
+              You should prioritize the courses based on your skill gap.
             </p>
           </div>
 
@@ -191,7 +197,8 @@ export default function SavedCourses() {
               In Progress Courses: {inProgress}
             </p>
             <p className="text-sm text-gray-600">
-              Completion Rate: {Math.round((completed / courses.length) * 100)}%
+              Completion Rate:{" "}
+              {Math.round((completed / courses.length) * 100)}%
             </p>
           </div>
         </div>

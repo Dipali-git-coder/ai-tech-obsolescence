@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 export default function SignUpForm() {
   const router = useRouter();
@@ -24,7 +25,16 @@ export default function SignUpForm() {
     e.preventDefault();
 
     if (!form.name || !form.email || !form.password) {
-      alert('Please fill name, email and password.');
+      // alert('Please fill name, email and password.');
+      toast.custom((t) => (
+      <div
+        className={`${
+          t.visible ? "animate-enter" : "animate-leave"
+        } max-w-sm w-full bg-yellow-50 border border-yellow-400 text-yellow-800 px-4 py-3 rounded-lg shadow-lg flex items-center gap-3`}
+      >
+        ⚠️ <span>Please fill all required fields.</span>
+      </div>
+    ));
       return;
     }
 
@@ -45,12 +55,29 @@ export default function SignUpForm() {
       const data = await response.json();
 
       if (!response.ok) {
-        alert(data.message || 'Sign up failed.');
+        // alert(data.message || 'Sign up failed.');
+        toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? "animate-enter" : "animate-leave"
+            } max-w-sm w-full bg-yellow-50 border border-yellow-400 text-yellow-800 px-4 py-3 rounded-lg shadow-lg flex items-center gap-3`}
+          >
+            ⚠️ <span>{data.message || "Sign up failed."}</span>
+          </div>
+        ));
         setLoading(false);
         return;
       }
 
-      alert('Sign up successful!');
+      toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? "animate-enter" : "animate-leave"
+            } max-w-sm w-full bg-green-50 border border-green-400 text-green-800 px-4 py-3 rounded-lg shadow-lg flex items-center gap-3`}
+          >
+            ✅ <span>Sign up successful!</span>
+          </div>
+        ));
       router.push('/signin');
     }catch (error){
       console.error('Error: ',error);

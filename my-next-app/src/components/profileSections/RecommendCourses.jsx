@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 export default function RecommendedCourses() {
   const [courses, setCourses] = useState([]);
@@ -27,11 +28,56 @@ export default function RecommendedCourses() {
     loadCourses();
   }, []);
 
-  const handleSave = (course) => {
-    const saved = JSON.parse(localStorage.getItem("savedCourses")) || [];
-    localStorage.setItem("savedCourses", JSON.stringify([...saved, course]));
-    alert("Course Saved!");
+  const handleSave = (item) => {
+    const email = localStorage.getItem("userEmail");
+    if (!email) {
+      console.error("User not logged in");
+      return;
+    }
+  const saved = JSON.parse(localStorage.getItem(`savedCourses_${email}`)) || [];
+
+  const course = {
+    id: item.id.videoId, // ✅ FIX (unique string id)
+    title: item.snippet.title,
+    skill: "YouTube Course",
+    duration: "N/A",
+    progress: 0,
+    status: "not-started",
+    category: "Recommended",
+
+    // ✅ IMPORTANT
+    thumbnail: item.snippet.thumbnails.medium.url,
+    link: `https://www.youtube.com/watch?v=${item.id.videoId}`,
   };
+
+  const alreadySaved = saved.some((c) => c.id === course.id);
+
+  if (alreadySaved) {
+    toast.custom((t) => (
+      <div
+        className={`${
+          t.visible ? "animate-enter" : "animate-leave"
+        } max-w-sm w-full bg-yellow-50 border border-yellow-400 text-yellow-800 px-4 py-3 rounded-lg shadow-lg flex items-center gap-3`}
+      >
+        ⚠️ <span>Course already saved!</span>
+      </div>
+    ));
+    return;
+  }
+
+  const updated = [...saved, course];
+  localStorage.setItem(`savedCourses_${email}`, JSON.stringify(updated));
+
+  toast.custom((t) => (
+    <div
+      className={`${
+        t.visible ? "animate-enter" : "animate-leave"
+      } max-w-sm w-full bg-green-50 border border-green-400 text-green-800 px-4 py-3 rounded-lg shadow-lg flex items-center gap-3`}
+    >
+      ✅ <span>Course Saved!</span>
+    </div>
+  ));
+};
 
   return (
     <div>
@@ -93,7 +139,19 @@ const generateSearchQueries = (skills) => {
     react: "React advanced tutorial",
     api: "REST API Node.js course",
   };
-  return skills.map((s) => map[s.toLowerCase()] || `${s} course`);
+  // ✅ normalize skills first
+  const skillsArray = Array.isArray(skills)
+    ? skills
+    : typeof skills === "string"
+      ? skills
+          .split(",")
+          .map(s => s.trim())
+          .filter(s => s.length > 0)
+      : [];
+
+  return skillsArray.map((s) =>
+    map[s.toLowerCase()] || `${s} course`
+  );
 };
 
 const fetchCoursesFromYouTube = async (queries) => {
@@ -102,7 +160,7 @@ const fetchCoursesFromYouTube = async (queries) => {
   const results = await Promise.all(
     queries.map(async (query) => {
       const res = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&maxResults=1&key=${API_KEY}`
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&maxResults=10&key=${API_KEY}`
       );
       const data = await res.json();
       return data.items;

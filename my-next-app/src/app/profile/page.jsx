@@ -5,6 +5,7 @@ import ProfileUI from './ProfileUI';
 
 export default function ProfilePage() {
   const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true); // 🔥 added
   const router = useRouter();
 
   useEffect(() => {
@@ -20,13 +21,25 @@ export default function ProfilePage() {
         'Authorization': `Bearer ${token}`,
       }
     })
-      .then(res => res.json())
-      .then(data => setUserData(data))
-      .catch(() => router.push('/signin'));
+      .then(res => {
+        if (!res.ok) {
+          throw new Error("Unauthorized"); // 🔥 important fix
+        }
+        return res.json();
+      })
+      .then(data => {
+        setUserData(data);
+        setLoading(false); // 🔥 stop loading
+      })
+      .catch(() => {
+        localStorage.removeItem('access'); // 🔥 clean invalid token
+        router.push('/signin');
+      });
 
   }, []);
 
-  if (!userData) return <p>Loading...</p>;
+  // 🔥 prevent UI flash
+  if (loading) return null;
 
   return <ProfileUI user={userData} />;
 }

@@ -1,71 +1,108 @@
 "use client";
 import { useState, useEffect } from "react";
-// this has static data for now, will be replaced by dynamic data from backend later.
+
 export default function RecommendSkills() {
   const [data, setData] = useState(null);
   const [open, setOpen] = useState(false);
   const [videos, setVideos] = useState([]);
 
-  // 🔥 Fetch from your Django API
+  const [userSkills, setUserSkills] = useState([]);
+  const [userRole, setUserRole] = useState("");
+
+  // 🔹 STEP 1: Fetch Profile
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const token = localStorage.getItem("token");
+
+        const res = await fetch("http://127.0.0.1:8000/api/users/profile/", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const profile = await res.json();
+        console.log("🔥 PROFILE:", profile);
+
+        const skillsData =
+          profile.skills ||
+          profile.user?.skills ||
+          [];
+
+        const roleData =
+          profile.profession ||
+          profile.role ||
+          profile.user?.profession ||
+          profile.user?.role ||
+          "";
+
+        const finalSkills =
+          typeof skillsData === "string"
+            ? skillsData.split(",")
+            .map((s) => s.trim())
+            .filter((s) => s.length > 0)
+            : skillsData;
+
+        setUserSkills(finalSkills);
+        setUserRole(roleData);
+
+        console.log("ROLE CHECK:", {
+          profession: profile.profession,
+          role: profile.role,
+          userRole: profile.user?.role,
+        });
+
+      } catch (err) {
+        console.error("PROFILE ERROR:", err);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
+  // 🔹 STEP 2: Fetch Recommendations (DYNAMIC)
   useEffect(() => {
     const fetchData = async () => {
       try {
+        if (userSkills.length === 0) {
+          console.log("⛔ Waiting for user skills...");
+          return;
+        }
+
+        console.log("🚀 Sending:", userRole, userSkills);
+
         const res = await fetch("http://127.0.0.1:8000/api/recommendations/", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            skills: ["python", "django", "sql", "aws", "docker", "git"],
-            role: "backend developer",
-            experience: "2 years",
+            role: userRole || null,
+            skills: userSkills,
           }),
         });
 
         const result = await res.json();
+        console.log("✅ API RESULT:", result);
 
-        // 🔥 Map backend response to UI format
         setData({
-          domain: "Backend Developer",
-          readiness: 65,
-          level: "Intermediate Backend Developer",
-          target: "Backend Architect",
+          domain: result.domain,
+          readiness: result.readiness,
+          level: result.level,
+          target: `${result.domain} Architect`,
           skillGap: result.recommended_skills || [],
-          nextSkill: result.recommended_skills?.[0] || "Node.js",
-          why: `Based on your current skills, ${result.recommended_skills?.[0]} is highly relevant for backend growth.`,
-          insight:
-            "You are transitioning towards scalable backend systems.",
-          phases: [
-            {
-              title: "Core Strength",
-              status: "completed",
-              skills: ["Python", "Django", "SQL"],
-            },
-            {
-              title: "Expansion",
-              status: "current",
-              progress: 40,
-              skills: result.recommended_skills?.slice(0, 2) || [],
-            },
-            {
-              title: "Scalability",
-              status: "locked",
-              skills: ["Microservices", "Redis"],
-            },
-            {
-              title: "DevOps Mastery",
-              status: "locked",
-              skills: ["Kubernetes", "CI/CD"],
-            },
-          ],
+          nextSkill: result.recommended_skills?.[0] || "Skill",
+          why: `Based on your current skills, ${result.recommended_skills?.[0]} is highly relevant for ${result.domain}`,
+          phases: result.learning_path || [],
         });
+
       } catch (err) {
-        console.error(err);
+        console.error("FETCH ERROR:", err);
       }
     };
 
     fetchData();
-  }, []);
+  }, [userSkills]);
 
-  // 🔥 YouTube Fetch
+  // 🔹 YouTube Fetch
   const fetchYouTube = async (skill) => {
     try {
       const res = await fetch(
@@ -78,147 +115,153 @@ export default function RecommendSkills() {
     }
   };
 
-  if (!data) return <p>Loading...</p>;
+  // 🔹 Loading State
+  if (!data) return <p className="text-center mt-10">Loading AI Recommendations...</p>;
 
   return (
-    <div className="max-w-3xl mx-auto bg-white shadow-xl rounded-2xl p-6 space-y-6">
-      {/* Profile */}
-      <div className="flex justify-between items-center">
-        <h2 className="text-xl text-gray-800 font-semibold">👤 Your Profile</h2>
-        <span className="text-sm bg-gray-100 px-3 py-1 rounded-full text-gray-600">
-          {data.domain}
-        </span>
-      </div>
+    <div className="max-w-4xl mx-auto space-y-8">
 
-      {/* Readiness */}
+      {/* 👋 Header */}
       <div>
-        <h3 className="font-medium text-gray-700 mb-2">📊 Readiness Score</h3>
-        <div className="w-full bg-gray-200 h-3 rounded-full">
-          <div
-            className="h-3 rounded-full bg-blue-500"
-            style={{ width: `${data.readiness}%` }}
-          />
-        </div>
-        <p className="text-sm mt-2 text-gray-600">
-          You are at <b>{data.level}</b>
+        <h1 className="text-2xl font-semibold text-gray-800">👋 Welcome back</h1>
+        <p className="text-gray-500">
+          Let's improve your <span className="font-medium">{data.domain}</span> skills today.
         </p>
       </div>
 
-      {/* Skill Gap */}
-      <div>
-        <h3 className="font-medium text-gray-700">⚠ Skill Gap</h3>
-        <ul className="list-disc ml-6 text-gray-700">
-          {data.skillGap.map((skill, i) => (
-            <li key={i}>{skill}</li>
-          ))}
-        </ul>
+      {/* 🚀 Cards */}
+      <div className="space-y-6">
+
+        <div className="bg-white shadow-md rounded-2xl p-5 border">
+          <p className="text-sm text-gray-500">1. Where are you now?</p>
+          <h2 className="text-lg font-semibold text-gray-800 mt-2">
+            {data.level}
+          </h2>
+          <p className="text-xs text-gray-500 mt-1">
+            Readiness: {data.readiness}%
+          </p>
+        </div>
+
+        <div className="bg-white shadow-md rounded-2xl p-5 border">
+          <p className="text-sm text-gray-500">2. What’s missing?</p>
+
+          <div className="mt-3 space-y-2">
+            {data.skillGap?.length > 0 ? (
+              data.skillGap.map((skill, i) => (
+                <div
+                  key={i}
+                  className="flex items-center justify-between bg-gray-50 px-3 py-2 rounded-lg"
+                >
+                  <span className="text-gray-700">{skill}</span>
+                </div>
+              ))
+            ) : (
+              <p className="text-sm text-gray-400">No gaps found 🎉</p>
+            )}
+          </div>
+        </div>
+
       </div>
 
-      {/* Next Step */}
-      <div className="bg-gray-50 p-4 rounded-xl">
-        <h3 className="font-semibold text-gray-800">🔥 Next Best Step → {data.nextSkill}</h3>
-        <p className="text-sm text-gray-600 mt-2">💡 {data.why}</p>
-        <p className="text-xs mt-2 text-gray-500">🧠 {data.insight}</p>
-        <button
-          onClick={() => fetchYouTube(data.nextSkill)}
-          className="mt-3 px-4 py-2 bg-blue-500 text-white rounded-lg cursor-pointer"
-        >
-          Start Learning
-        </button>
+      {/* 🤖 AI Mentor */}
+      <div className="bg-white shadow-lg rounded-2xl p-6 space-y-4 border">
+
+        <h2 className="text-lg font-semibold text-gray-800">
+          🤖 AI Mentor
+        </h2>
+
+        <div className="bg-gray-50 p-4 rounded-xl">
+          <p className="text-sm text-gray-500">👉 Recommendation</p>
+
+          <h3 className="text-xl font-semibold text-gray-800 mt-1">
+            Learn {data.nextSkill}
+          </h3>
+
+          <p className="text-gray-600 text-sm mt-2">{data.why}</p>
+
+          <button
+            onClick={() => fetchYouTube(data.nextSkill)}
+            className="mt-4 px-5 py-2 rounded-lg text-white 
+            bg-gradient-to-r from-purple-500 to-blue-500 
+            hover:opacity-90 transition"
+          >
+            Start Learning
+          </button>
+        </div>
+
       </div>
 
-      {/* YouTube Results */}
+      {/* 📺 YouTube */}
       {videos.length > 0 && (
-        <div>
-          <h3 className="font-medium text-gray-700">📺 Learning Resources</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+        <div className="bg-white shadow-md rounded-2xl p-5 border">
+          <h3 className="text-lg font-semibold text-gray-800 mb-4">
+            📺 Learning Resources
+          </h3>
+
+          <div className="grid md:grid-cols-2 gap-5">
             {videos.map((video) => (
               <a
                 key={video.id.videoId}
                 href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
                 target="_blank"
-                className="border rounded-lg p-2 hover:shadow"
+                className="group bg-gray-50 rounded-xl overflow-hidden hover:shadow-lg transition"
               >
                 <img
                   src={video.snippet.thumbnails.medium.url}
-                  alt="thumb"
-                  className="rounded"
+                  className="rounded-lg"
                 />
-                <p className="text-sm mt-2 text-gray-700">
-                  {video.snippet.title}
-                </p>
+                <div className="p-3">
+                  <p className="text-sm font-medium text-gray-800 line-clamp-2">
+                    {video.snippet.title}
+                  </p>
+                </div>
               </a>
             ))}
           </div>
         </div>
       )}
 
-      {/* Career Track */}
-      <div>
-        <h3 className="font-medium text-gray-700">🧭 Career Growth Track</h3>
-        <p className="text-sm text-gray-700">
-          You are: <b>{data.level}</b> → Target: <b>{data.target}</b> 🚀
-        </p>
-      </div>
-
-      {/* Learning Path */}
-      <div>
+      {/* 📚 Learning Journey */}
+      <div className="bg-white shadow-md rounded-2xl p-5 border">
         <button
           onClick={() => setOpen(!open)}
-          className="w-full text-left font-medium text-gray-700 cursor-pointer"
+          className="w-full flex justify-between items-center text-left"
         >
-          📚 AI Learning Journey {open ? "▲" : "▼"}
+          <h3 className="text-lg font-semibold text-gray-800">
+            📚 AI Learning Journey
+          </h3>
+          <span className="text-gray-500 text-sm">
+            {open ? "▲" : "▼"}
+          </span>
         </button>
 
         {open && (
-          <div className="mt-4 space-y-4">
-            {data.phases.map((phase, i) => (
+          <div className="mt-5 space-y-4">
+            {data.phases?.map((phase, i) => (
               <div
                 key={i}
-                className="p-4 rounded-xl border bg-gray-50"
+                className="bg-gray-50 rounded-xl p-4 shadow-sm"
               >
-                <div className="flex justify-between items-center">
-                  <h4 className="font-semibold text-gray-800">
-                    Phase {i + 1}: {phase.title}
-                  </h4>
-                  {phase.status === "current" && (
-                    <span className="text-xs text-blue-600">
-                      {phase.progress}% Progress
+                <h4 className="font-semibold text-gray-800">
+                  Phase {i + 1}: {phase.title}
+                </h4>
+
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {phase.skills?.map((s, idx) => (
+                    <span
+                      key={idx}
+                      className="text-xs bg-white px-2 py-1 rounded-md text-gray-600"
+                    >
+                      {s}
                     </span>
-                  )}
-                </div>
-
-                <ul className="text-sm mt-2 text-gray-700">
-                  {phase.skills.map((s, idx) => (
-                    <li key={idx}>• {s}</li>
                   ))}
-                </ul>
-
-                {phase.status === "current" && (
-                  <button
-                    onClick={() => fetchYouTube(phase.skills[0])}
-                    className="mt-3 px-3 py-1 bg-blue-500 text-white rounded cursor-pointer"
-                  >
-                    Continue Learning
-                  </button>
-                )}
-
-                {phase.status === "locked" && (
-                  <span className="text-xs text-gray-400 mt-2 block">
-                    🔒 Locked
-                  </span>
-                )}
-
-                {phase.status === "completed" && (
-                  <span className="text-xs text-green-500 mt-2 block">
-                    ✔ Completed
-                  </span>
-                )}
+                </div>
               </div>
             ))}
           </div>
         )}
       </div>
+
     </div>
   );
 }

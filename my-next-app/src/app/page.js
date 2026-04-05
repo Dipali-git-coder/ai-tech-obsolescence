@@ -10,7 +10,7 @@ export default function Home() {
 
   const handleGetStarted = () => {
     // client-side navigation to your analyze page
-    router.push("/analyze");
+    router.push("/dashboard");
   };
 
   return (

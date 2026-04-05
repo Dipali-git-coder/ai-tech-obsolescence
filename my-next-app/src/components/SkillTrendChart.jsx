@@ -2,8 +2,8 @@
 
 import {
   ResponsiveContainer,
-  Area,
-  AreaChart,
+  LineChart,
+  Line,
 } from "recharts";
 
 export default function SkillTrendCard({
@@ -11,7 +11,7 @@ export default function SkillTrendCard({
   data,
   growthData,
 }) {
-  const isTrending = data[1].count > data[0].count;
+  const isTrending = data[data.length - 1].count > data[0].count;
 
   return (
     <div className="relative bg-white/60 backdrop-blur-xl shadow-xl rounded-3xl p-8 w-full h-64 overflow-hidden border border-gray-200">
@@ -26,52 +26,29 @@ export default function SkillTrendCard({
         {skillName}
       </h3>
 
-      {/* 🔥 Smart Growth Display */}
+      {/* ✅ FIXED Growth Display */}
       <p
         className={`text-lg font-semibold mt-2 ${
           isTrending ? "text-green-600" : "text-red-500"
         }`}
       >
-        {isTrending ? "▲" : "▼"}{" "}
-        {growthData.type === "multiplier"
-          ? `${growthData.value.toFixed(1)}x`
-          : `${Math.abs(growthData.value).toFixed(0)}%`}
+        {growthData.isNegative ? "▼" : "▲"}{" "}
+        {Math.abs(Number(growthData.value))}%
       </p>
 
-      {/* Chart */}
+      {/* ✅ CLEAN LINE CHART (NO TRIANGLE BUG) */}
       <div className="h-28 mt-6">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={data}>
-            <defs>
-              <linearGradient
-                id={`gradient-${skillName}`}
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="1"
-              >
-                <stop
-                  offset="5%"
-                  stopColor={isTrending ? "#22c55e" : "#ef4444"}
-                  stopOpacity={0.5}
-                />
-                <stop
-                  offset="95%"
-                  stopColor={isTrending ? "#22c55e" : "#ef4444"}
-                  stopOpacity={0}
-                />
-              </linearGradient>
-            </defs>
-
-            <Area
+          <LineChart data={data}>
+            <Line
               type="monotone"
               dataKey="count"
               stroke={isTrending ? "#22c55e" : "#ef4444"}
-              strokeWidth={4}
-              fill={`url(#gradient-${skillName})`}
-              dot={{ r: 4 }}
+              strokeWidth={3}
+              dot={false}
+              isAnimationActive={true}
             />
-          </AreaChart>
+          </LineChart>
         </ResponsiveContainer>
       </div>
     </div>

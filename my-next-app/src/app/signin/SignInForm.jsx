@@ -21,6 +21,18 @@ export default function SignInForm({ form, onChange, onSubmit }) {
           </div>
 
           <div>
+            <label className="text-lg text-gray-600 block mb-1">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={onChange}
+              placeholder="abc@gmail.com"
+              className="text-gray-600 w-full border border-gray-500 rounded-xl py-2 focus:outline-none"
+            />
+          </div>
+
+          <div>
             <label className="text-lg text-gray-600 block mb-1">Password</label>
             <input
               type="password"

@@ -1,8 +1,7 @@
 'use client'
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState, useRef } from "react";
-import UserProfileMenu from './UserProfileMenu';
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
     const pathname = usePathname();
@@ -13,26 +12,20 @@ export default function Navbar() {
         {name: "Home", url: "/" },
         {name: "About Us", url: "/about" },
         {name: "Contact Us", url: "/contact" },
-        {name: "Saved Plan", url: "/saved" },
     ];
 
     const primary = items[0];
     const others = items.slice(1);
 
     const [active, setActive] = useState(null);
-
     const [user, setUser] = useState(null);
 
     const handleProfileClick = () => {
-
-        const token = localStorage.getItem("access");
-
-        if (!token) {
+        if (!localStorage.getItem("access")) {
             router.push("/signin");
-        } else {
-            router.push("/profile");
+            return;
         }
-
+        router.push("/profile");
     };
 
     useEffect(() => {
@@ -55,12 +48,10 @@ export default function Navbar() {
         const fetchProfile = async () => {
 
             try {
-
-                // check if token exists
                 const token = localStorage.getItem("access");
 
                 if (!token) {
-                    console.log("User not logged in");
+                    setUser(null);
                     return;
                 }
 
@@ -74,11 +65,12 @@ export default function Navbar() {
 
                 if (res.ok) {
                     const data = await res.json();
-                    console.log("User profile data:", data);
                     setUser(data);
                 } 
                 else if (res.status === 401) {
-                    console.log("User not authenticated");
+                    // 🔥 FIX: invalid token handle
+                    localStorage.removeItem("access");
+                    setUser(null);
                 } 
                 else {
                     console.error("Unexpected error:", res.status);
@@ -86,6 +78,7 @@ export default function Navbar() {
 
             } catch (err) {
                 console.error("Profile fetch error:", err);
+                setUser(null);
             }
         };
 
@@ -130,7 +123,7 @@ export default function Navbar() {
                 <li>
                     <Link
                         href="/signup"
-                        className="bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-blue-600 font-semibold"
+                        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 font-semibold"
                     >
                         Sign Up
                     </Link>
@@ -139,7 +132,7 @@ export default function Navbar() {
                 <li>
                     <Link
                         href="/signin"
-                        className="bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-blue-600 font-semibold"
+                        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 font-semibold"
                     >
                         Sign In
                     </Link>
@@ -155,7 +148,7 @@ export default function Navbar() {
                         <img
                             src={`http://127.0.0.1:8000${user.profile_pic}`}
                             alt="Profile"
-                            className="w-10 h-10 rounded-full cursor-pointer border-2 border-white hover:scale-105 transition"
+                            className="w-10 h-10 rounded-full border-2 border-white hover:scale-105 transition"
                         />
 
                     ) : user ? (
@@ -169,7 +162,7 @@ export default function Navbar() {
                         <img
                             src="/user-profile-icon.png"
                             alt="Profile"
-                            className="w-10 h-10 rounded-full cursor-pointer border-2 border-white hover:scale-105 transition"
+                            className="w-10 h-10 rounded-full border-2 border-white hover:scale-105 transition"
                         />
 
                     )}
