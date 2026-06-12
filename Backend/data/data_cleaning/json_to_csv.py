@@ -28,4 +28,4 @@ df.rename(columns={
 # Save clean base CSV
 df.to_csv("data/processed/adzuna_jobs_clean_base.csv", index=False)
 
-print("✅ CSV file created successfully")
+print("CSV file created successfully")

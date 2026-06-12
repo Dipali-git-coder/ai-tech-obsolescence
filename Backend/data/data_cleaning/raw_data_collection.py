@@ -35,9 +35,9 @@ for role in JOB_ROLES:
             data = response.json()
             all_jobs.extend(data["results"]) 
 
-            print("✅ Data saved successfully")
+            print("Data saved successfully")
         else:
-            print("❌ Bad request — check parameters")
+            print("Bad request — check parameters")
 
 with open("data/raw/adzuna_jobs_raw.json", "w", encoding="utf-8") as f:
         json.dump(all_jobs, f, indent=4)
