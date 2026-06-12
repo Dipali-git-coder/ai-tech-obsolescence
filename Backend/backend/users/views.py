@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from .serializers import UserProfileSerializer
 from .models import UserProfile
 
-#GET the users data
+# GET the users data
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def user_profile(request):
@@ -25,7 +25,7 @@ def user_profile(request):
         "skills": profile.skills,
     })
 
-# 🔹 SIGNUP VIEW
+# SIGNUP VIEW
 class SignupView(APIView):
     def post(self, request):
         # Extract data from request
@@ -55,7 +55,7 @@ class SignupView(APIView):
         return Response({'message': 'User created successfully'})
 
 
-# 🔹 USER PROFILE VIEW
+# USER PROFILE VIEW
 class UserProfileView(APIView):
     permission_classes = [IsAuthenticated]
 

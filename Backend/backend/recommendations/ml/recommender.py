@@ -56,7 +56,7 @@ def recommend_skills(user_skills, target_role, experience=None, top_n=10):
 
     skill_counter = Counter()
 
-    # 🔥 IMPORTANT FIX: only top jobs count karenge (better ML)
+    # IMPORTANT FIX: only top jobs count karenge (better ML)
     for idx in top_indices:
         skills_list = filtered_df.iloc[idx]["skills"]
         skill_counter.update(skills_list)
@@ -77,10 +77,10 @@ def recommend_skills(user_skills, target_role, experience=None, top_n=10):
         skill for skill, count in skill_counter.most_common(top_n)
     ]
 
-    # 🔥 NEW: SKILL GAP LIST (IMPORTANT)
+    # NEW: SKILL GAP LIST (IMPORTANT)
     skill_gap = recommended_skills.copy()
 
-    # 🔥 NEW: LEARNING PATH
+    # NEW: LEARNING PATH
     learning_path = [
         {
             "title": "Core Strength",
@@ -107,7 +107,7 @@ def recommend_skills(user_skills, target_role, experience=None, top_n=10):
 
     return {
         "recommended_skills": recommended_skills,
-        "skill_gap": skill_gap,  # ✅ NEW
-        "skill_gap_count": len(recommended_skills),  # same as before
-        "learning_path": learning_path  # ✅ NEW
+        "skill_gap": skill_gap,  
+        "skill_gap_count": len(recommended_skills),  
+        "learning_path": learning_path  
     }

@@ -6,7 +6,7 @@ from recommendations.models import Recommendation
 import json
 
 
-# 🔥 NEW: AUTO ROLE DETECTION FUNCTION
+# NEW: AUTO ROLE DETECTION FUNCTION
 def detect_role_from_skills(skills):
     role_map = {
         "frontend developer": ["html", "css", "javascript", "react", "bootstrap"],
@@ -44,10 +44,10 @@ class SkillRecommendationAPIView(APIView):
 
         print("Incoming data:", request.data)
 
-        # 🔥 AUTO DETECT ROLE IF NOT PROVIDED
+        # AUTO DETECT ROLE IF NOT PROVIDED
         if not role:
             role = detect_role_from_skills(skills)
-            print("🎯 Auto-detected role:", role)
+            print("Auto-detected role:", role)
 
         result = recommend_skills(
             user_skills=skills,
@@ -86,7 +86,7 @@ class SkillRecommendationAPIView(APIView):
 
         return Response({
             "status": "saved",
-            "domain": role,  # ✅ now always available
+            "domain": role,  
             "recommended_skills": recommended_skills,
             "skill_gap": skill_gap,
             "learning_path": learning_path,

@@ -27,7 +27,7 @@ class Command(BaseCommand):
 
         df = pd.read_csv(file_path)
 
-        # 🔥 Year-wise & Month-wise Skill Counter
+        # Year-wise & Month-wise Skill Counter
         yearly_skill_counter = defaultdict(lambda: Counter())
 
         for _, row in df.iterrows():
@@ -52,7 +52,7 @@ class Command(BaseCommand):
 
         total_created = 0
 
-        # 🔥 Save into Skill & SkillTrend
+        # Save into Skill & SkillTrend
         for (year, month), counter in yearly_skill_counter.items():
             for skill_name, count in counter.items():
 
@@ -70,7 +70,7 @@ class Command(BaseCommand):
 
                 total_created += 1
 
-        # 🔥 Update demand_score for each skill (Total Count Across Years)
+        # Update demand_score for each skill (Total Count Across Years)
         for skill in Skill.objects.all():
             total = SkillTrend.objects.filter(skill=skill).aggregate(
                 total_count=Sum("count")
@@ -81,6 +81,6 @@ class Command(BaseCommand):
 
         self.stdout.write(
             self.style.SUCCESS(
-                f"✅ Skill trend data loaded successfully ({total_created} records processed)"
+                f"Skill trend data loaded successfully ({total_created} records processed)"
             )
         )

@@ -21,7 +21,7 @@ class TrendingSkills(APIView):
                 first = trends.first().count
                 last = trends.last().count
 
-                if last > first:   # 📈 Trending
+                if last > first:   # Trending
                     trending_skills.append({
                         "skill_id": skill.skill_id,
                         "name": skill.name,
@@ -44,7 +44,7 @@ class ObsoleteSkills(APIView):
                 first = trends.first().count
                 last = trends.last().count
 
-                if last < first:   # 📉 Declining
+                if last < first:   # Declining
                     obsolete_skills.append({
                         "skill_id": skill.skill_id,
                         "name": skill.name,
