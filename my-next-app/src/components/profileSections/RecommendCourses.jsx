@@ -37,7 +37,7 @@ export default function RecommendedCourses() {
   const saved = JSON.parse(localStorage.getItem(`savedCourses_${email}`)) || [];
 
   const course = {
-    id: item.id.videoId, // ✅ FIX (unique string id)
+    id: item.id.videoId, // FIX (unique string id)
     title: item.snippet.title,
     skill: "YouTube Course",
     duration: "N/A",
@@ -45,7 +45,6 @@ export default function RecommendedCourses() {
     status: "not-started",
     category: "Recommended",
 
-    // ✅ IMPORTANT
     thumbnail: item.snippet.thumbnails.medium.url,
     link: `https://www.youtube.com/watch?v=${item.id.videoId}`,
   };
@@ -133,13 +132,13 @@ export default function RecommendedCourses() {
   );
 }
 
-// 🔥 helper functions
+// helper functions
 const generateSearchQueries = (skills) => {
   const map = {
     react: "React advanced tutorial",
     api: "REST API Node.js course",
   };
-  // ✅ normalize skills first
+  // normalize skills first
   const skillsArray = Array.isArray(skills)
     ? skills
     : typeof skills === "string"

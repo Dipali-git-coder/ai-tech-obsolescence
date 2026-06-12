@@ -43,7 +43,7 @@ export default function Navbar() {
     const linkClass = (name) =>
     `${active === name ? 'text-blue-400' : 'text-white'} hover:text-gray-300 font-semibold`;
 
-    /* -------- Fetch User Profile -------- */
+    /* Fetch User Profile */
     useEffect(() => {
         const fetchProfile = async () => {
 
@@ -68,7 +68,7 @@ export default function Navbar() {
                     setUser(data);
                 } 
                 else if (res.status === 401) {
-                    // 🔥 FIX: invalid token handle
+                    // invalid token handle
                     localStorage.removeItem("access");
                     setUser(null);
                 } 
@@ -85,7 +85,6 @@ export default function Navbar() {
         fetchProfile();
 
     }, []); 
-    /* ------------------------------------ */
 
     return (
     <div>
@@ -138,7 +137,7 @@ export default function Navbar() {
                     </Link>
                 </li>
 
-                {/* -------- Profile Icon -------- */}
+                {/* Profile Icon */}
                 <button
                     onClick={handleProfileClick}
                     className="focus:outline-none"
@@ -167,7 +166,6 @@ export default function Navbar() {
 
                     )}
                 </button>
-                {/* -------------------------------- */}
 
                 </ul>
             </div>

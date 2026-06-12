@@ -5,7 +5,7 @@ import ProfileUI from './ProfileUI';
 
 export default function ProfilePage() {
   const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(true); // 🔥 added
+  const [loading, setLoading] = useState(true); 
   const router = useRouter();
 
   useEffect(() => {
@@ -23,22 +23,22 @@ export default function ProfilePage() {
     })
       .then(res => {
         if (!res.ok) {
-          throw new Error("Unauthorized"); // 🔥 important fix
+          throw new Error("Unauthorized"); 
         }
         return res.json();
       })
       .then(data => {
         setUserData(data);
-        setLoading(false); // 🔥 stop loading
+        setLoading(false); // stop loading
       })
       .catch(() => {
-        localStorage.removeItem('access'); // 🔥 clean invalid token
+        localStorage.removeItem('access'); // clean invalid token
         router.push('/signin');
       });
 
   }, []);
 
-  // 🔥 prevent UI flash
+  // prevent UI flash
   if (loading) return null;
 
   return <ProfileUI user={userData} />;

@@ -26,7 +26,7 @@ export default function SkillTrendCard({
         {skillName}
       </h3>
 
-      {/* ✅ FIXED Growth Display */}
+      {/* FIXED Growth Display */}
       <p
         className={`text-lg font-semibold mt-2 ${
           isTrending ? "text-green-600" : "text-red-500"
@@ -36,7 +36,7 @@ export default function SkillTrendCard({
         {Math.abs(Number(growthData.value))}%
       </p>
 
-      {/* ✅ CLEAN LINE CHART (NO TRIANGLE BUG) */}
+      {/* CLEAN LINE CHART */}
       <div className="h-28 mt-6">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data}>

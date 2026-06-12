@@ -9,7 +9,7 @@ export default function RecommendSkills() {
   const [userSkills, setUserSkills] = useState([]);
   const [userRole, setUserRole] = useState("");
 
-  // 🔹 STEP 1: Fetch Profile
+  // STEP 1: Fetch Profile
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -22,7 +22,7 @@ export default function RecommendSkills() {
         });
 
         const profile = await res.json();
-        console.log("🔥 PROFILE:", profile);
+        console.log("PROFILE:", profile);
 
         const skillsData =
           profile.skills ||
@@ -60,16 +60,16 @@ export default function RecommendSkills() {
     fetchProfile();
   }, []);
 
-  // 🔹 STEP 2: Fetch Recommendations (DYNAMIC)
+  // STEP 2: Fetch Recommendations (DYNAMIC)
   useEffect(() => {
     const fetchData = async () => {
       try {
         if (userSkills.length === 0) {
-          console.log("⛔ Waiting for user skills...");
+          console.log("Waiting for user skills...");
           return;
         }
 
-        console.log("🚀 Sending:", userRole, userSkills);
+        console.log("Sending:", userRole, userSkills);
 
         const res = await fetch("http://127.0.0.1:8000/api/recommendations/", {
           method: "POST",
@@ -81,7 +81,7 @@ export default function RecommendSkills() {
         });
 
         const result = await res.json();
-        console.log("✅ API RESULT:", result);
+        console.log("API RESULT:", result);
 
         setData({
           domain: result.domain,
@@ -102,7 +102,7 @@ export default function RecommendSkills() {
     fetchData();
   }, [userSkills]);
 
-  // 🔹 YouTube Fetch
+  // YouTube Fetch
   const fetchYouTube = async (skill) => {
     try {
       const res = await fetch(
@@ -115,13 +115,13 @@ export default function RecommendSkills() {
     }
   };
 
-  // 🔹 Loading State
+  // Loading State
   if (!data) return <p className="text-center mt-10">Loading AI Recommendations...</p>;
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
 
-      {/* 👋 Header */}
+      {/* Header */}
       <div>
         <h1 className="text-2xl font-semibold text-gray-800">👋 Welcome back</h1>
         <p className="text-gray-500">
@@ -129,7 +129,7 @@ export default function RecommendSkills() {
         </p>
       </div>
 
-      {/* 🚀 Cards */}
+      {/* Cards */}
       <div className="space-y-6">
 
         <div className="bg-white shadow-md rounded-2xl p-5 border">
@@ -163,7 +163,7 @@ export default function RecommendSkills() {
 
       </div>
 
-      {/* 🤖 AI Mentor */}
+      {/* AI Mentor */}
       <div className="bg-white shadow-lg rounded-2xl p-6 space-y-4 border">
 
         <h2 className="text-lg font-semibold text-gray-800">
@@ -191,7 +191,7 @@ export default function RecommendSkills() {
 
       </div>
 
-      {/* 📺 YouTube */}
+      {/* YouTube */}
       {videos.length > 0 && (
         <div className="bg-white shadow-md rounded-2xl p-5 border">
           <h3 className="text-lg font-semibold text-gray-800 mb-4">
@@ -221,7 +221,7 @@ export default function RecommendSkills() {
         </div>
       )}
 
-      {/* 📚 Learning Journey */}
+      {/* Learning Journey */}
       <div className="bg-white shadow-md rounded-2xl p-5 border">
         <button
           onClick={() => setOpen(!open)}

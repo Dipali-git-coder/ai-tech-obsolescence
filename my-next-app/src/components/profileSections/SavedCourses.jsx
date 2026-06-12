@@ -6,7 +6,7 @@ export default function SavedCourses() {
   const router = useRouter();
   const [courses, setCourses] = useState([]);
 
-  // ✅ Fetch from localStorage
+  // Fetch from localStorage
   useEffect(() => {
     const email = localStorage.getItem("userEmail");
     if (!email) return;
@@ -15,7 +15,7 @@ export default function SavedCourses() {
     setCourses(savedCourses);
   }, []);
 
-  // ✅ Remove course
+  // Remove course
   const handleRemove = (id) => {
     const email = localStorage.getItem("email");
     if (!email) return;
@@ -26,7 +26,7 @@ export default function SavedCourses() {
 
   const hasCourses = courses.length > 0;
 
-  // ✅ Empty state
+  // Empty state
   if (!hasCourses) {
     return (
       <div className="flex flex-col items-center justify-center h-[70vh] text-center">
@@ -43,7 +43,7 @@ export default function SavedCourses() {
     );
   }
 
-  // ✅ Group by category
+  // Group by category
   const grouped = courses.reduce((acc, course) => {
     if (!acc[course.category]) acc[course.category] = [];
     acc[course.category].push(course);
@@ -103,7 +103,7 @@ export default function SavedCourses() {
                     key={course.id}
                     className="border rounded-xl p-4 bg-white shadow-sm hover:shadow-md transition"
                   >
-                    {/* ✅ Thumbnail */}
+                    {/* Thumbnail */}
                     {course.thumbnail && (
                       <img
                         src={course.thumbnail}

@@ -25,7 +25,7 @@ export default function Dashboard() {
       .catch((err) => console.error(err));
   }, []);
 
-  // ✅ Better graph data (adds middle point)
+  // Better graph data (adds middle point)
   const generateTrendData = (first, latest) => {
     return [
       { year: "Start", count: first },
@@ -34,7 +34,7 @@ export default function Dashboard() {
     ];
   };
 
-  // ✅ Get max growth for normalization
+  // Get max growth for normalization
   const getMaxGrowth = (skills) => {
     const growths = skills.map((skill) => {
       if (!skill.first_year_count || skill.first_year_count <= 0) return 0;
@@ -50,7 +50,7 @@ export default function Dashboard() {
   const maxTrendingGrowth = getMaxGrowth(trending);
   const maxObsoleteGrowth = getMaxGrowth(obsolete);
 
-  // ✅ FINAL: Normalized growth (REALISTIC)
+  // FINAL: Normalized growth (REALISTIC)
   const calculateGrowth = (first, latest, maxGrowth) => {
   if (!first || first <= 0 || !maxGrowth) {
     return { type: "percent", value: 0 };
@@ -58,7 +58,7 @@ export default function Dashboard() {
 
   let rawGrowth = (latest - first) / first;
 
-  // ✅ HANDLE NEGATIVE (obsolete case)
+  // HANDLE NEGATIVE (obsolete case)
   let isNegative = rawGrowth < 0;
   let absGrowth = Math.abs(rawGrowth);
 
@@ -67,10 +67,10 @@ export default function Dashboard() {
   // avoid NaN
   if (!isFinite(ratio)) ratio = 0;
 
-  // 🔥 power scaling
+  // power scaling
   ratio = Math.pow(ratio, 0.4);
 
-  // 🎯 range mapping
+  // range mapping
   let min = 35;
   let max = 85;
 
@@ -79,7 +79,7 @@ export default function Dashboard() {
   return {
     type: "percent",
     value: Math.round(finalValue),
-    isNegative: isNegative, // 🔥 important
+    isNegative: isNegative, 
   };
 };
 
@@ -91,7 +91,7 @@ export default function Dashboard() {
 
       <KPICards trending={trending} obsolete={obsolete} />
 
-      {/* 🔥 Trending Skills */}
+      {/* Trending Skills */}
       <div className="mb-14">
         <h2 className="text-2xl font-semibold mb-6 text-gray-700">
           Top Trending Skills
@@ -116,7 +116,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* 🔥 Obsolete Skills */}
+      {/* Obsolete Skills */}
       <div>
         <h2 className="text-2xl font-semibold mb-6 text-gray-700">
           Obsolete Skills

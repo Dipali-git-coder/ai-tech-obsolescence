@@ -6,17 +6,17 @@ export default function Skills() {
   const [newSkill, setNewSkill] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // ✅ Keep everything lowercase for perfect matching
+  // Keep everything lowercase for perfect matching
   const skillCategories = {
     frontend: ["react", "next.js", "html", "css", "javascript"],
     backend: ["django", "node.js", "express", "rest api"],
     ai: ["python", "machine learning", "deep learning"],
   };
 
-  // ✅ Normalize function (core fix)
+  // Normalize function (core fix)
   const normalize = (skill) => skill.toLowerCase().trim();
 
-  // ✅ Capitalize for UI only
+  // Capitalize for UI only
   const formatSkill = (skill) => {
     return skill
       .toLowerCase()
@@ -25,7 +25,7 @@ export default function Skills() {
       .join(" ");
   };
 
-  // ✅ Fixed progress calculation
+  // Fixed progress calculation
   const calculateProgress = () => {
     const result = {};
     const normalizedSkills = skills.map(normalize);
@@ -47,7 +47,7 @@ export default function Skills() {
 
   const progress = calculateProgress();
 
-  // ✅ Fetch skills from backend
+  // Fetch skills from backend
   useEffect(() => {
     const fetchSkills = async () => {
       try {
@@ -78,7 +78,7 @@ export default function Skills() {
     fetchSkills();
   }, []);
 
-  // ✅ Add skill
+  // Add skill
   const handleAddSkill = async () => {
     if (!newSkill.trim()) return;
 
@@ -110,7 +110,7 @@ export default function Skills() {
     }
   };
 
-  // ✅ Remove skill
+  // Remove skill
   const handleRemoveSkill = async (skillToRemove) => {
     const updatedSkills = skills.filter(s => s !== skillToRemove);
     setLoading(true);
