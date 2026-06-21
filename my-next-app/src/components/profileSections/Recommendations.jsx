@@ -143,7 +143,7 @@ export default function RecommendSkills() {
         </div>
 
         <div className="bg-white shadow-md rounded-2xl p-5 border">
-          <p className="text-sm text-gray-500">2. What’s missing?</p>
+          <p className="text-sm text-gray-500">2. What's missing?</p>
 
           <div className="mt-3 space-y-2">
             {data.skillGap?.length > 0 ? (

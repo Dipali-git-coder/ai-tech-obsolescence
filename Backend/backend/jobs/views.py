@@ -29,6 +29,13 @@ class TrendingSkills(APIView):
                         "latest_year_count": last
                     })
 
+        trending_skills.sort(
+            key=lambda x: (
+                x["latest_year_count"] - x["first_year_count"]
+            ) / x["first_year_count"],
+            reverse=True
+        )
+
         return Response(trending_skills)
 
         
@@ -49,8 +56,14 @@ class ObsoleteSkills(APIView):
                         "skill_id": skill.skill_id,
                         "name": skill.name,
                         "first_year_count": first,
-                        "latest_year_count": last
+                        "latest_year_count": last,
+                        "decline": ((first - last) / first) * 100
                     })
+
+        obsolete_skills.sort(
+            key=lambda x: x["decline"],
+            reverse=True
+        )
 
         return Response(obsolete_skills)
     
