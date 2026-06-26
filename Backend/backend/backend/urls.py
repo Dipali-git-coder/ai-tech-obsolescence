@@ -29,6 +29,7 @@ urlpatterns = [
     path('api/jobs/', include('jobs.urls')),
     path('api/users/', include('users.urls')),
     path('api/recommendations/', include('recommendations.urls')),
+    path('api/career-coach/', include('chatbot.urls'))
 ]
 
 if settings.DEBUG:

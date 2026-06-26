@@ -49,7 +49,7 @@ export default function SignInForm({ form, onChange, onSubmit }) {
           </button>
 
           <p className="text-center text-sm text-gray-500">
-            Don&apos;t have an account? <a href="/signup" className="text-blue-600">Sign up</a>
+            Don't have an account? <a href="/signup" className="text-blue-600">Sign up</a>
           </p>
         </form>
       </div>
